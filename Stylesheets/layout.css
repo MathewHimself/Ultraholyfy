@@ -1,3 +1,56 @@
 body {
-  background-color: aqua;
+  background-color: #141414;
+}
+.background {
+  content: '';
+  width: 1920px;
+  height: 7374px;
+  top: 0;
+  left: center;
+  opacity: 0.1;
+  position: absolute;
+  z-index: -1;
+}
+
+.krest1 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 1.56vw;
+  padding-left: 4.7vw;
+}
+.krest2 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 40.41vw;
+  padding-left: 4.7vw;
+}
+.krest3 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 1.56vw;
+  padding-left: 92.344vw;
+}
+.krest4 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 40.41vw;
+  padding-left: 92.344vw;
+}
+.karma {
+  position: absolute;
+  width: 78.9vw;
+  height: 12.5vw;
+  padding-top: 16vw;
+  padding-left: 10vw;
+}
+.number1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: light;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
 }
