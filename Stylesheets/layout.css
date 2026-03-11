@@ -2,10 +2,23 @@ body {
   background-color: #141414;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.background {
+body::before {
+  content: '';
   position: absolute;
-  opacity: 0.1;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 620%;
+  background-image: url('../Images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: -1;
 }
 .section1 {
   width: 90.625vw;
@@ -16,35 +29,33 @@ body {
   width: 2.9vw;
   height: 3.1vw;
   padding-top: 1.56vw;
-  padding-left: 4.7vw;
 }
 .krest2 {
   position: absolute;
   width: 2.9vw;
   height: 3.1vw;
   padding-top: 40.41vw;
-  padding-left: 4.7vw;
 }
 .krest3 {
   position: absolute;
   width: 2.9vw;
   height: 3.1vw;
   padding-top: 1.56vw;
-  padding-left: 92.344vw;
+  padding-left: 87.8vw;
 }
 .krest4 {
   position: absolute;
   width: 2.9vw;
   height: 3.1vw;
   padding-top: 40.41vw;
-  padding-left: 92.344vw;
+  padding-left: 87.8vw;
 }
 .karma {
   position: absolute;
-  width: 78.9vw;
+  width: 80vw;
   height: 12.5vw;
   padding-top: 16vw;
-  padding-left: 10vw;
+  padding-left: 5vw;
 }
 .number1 {
   font-family: 'Helvetica';
@@ -52,8 +63,8 @@ body {
   color: #fff;
   font-size: 1.172vw;
   position: absolute;
-  padding-top: 1.875vw;
-  padding-left: 9.95vw;
+  padding-top: 2.1vw;
+  padding-left: 5.2vw;
 }
 .number2 {
   font-family: 'Helvetica';
@@ -61,8 +72,8 @@ body {
   color: #fff;
   font-size: 1.172vw;
   position: absolute;
-  padding-top: 1.875vw;
-  padding-left: 83.7vw;
+  padding-top: 2.1vw;
+  padding-left: 79vw;
 }
 .number3 {
   font-family: 'Helvetica';
@@ -70,8 +81,8 @@ body {
   color: #fff;
   font-size: 1.172vw;
   position: absolute;
-  padding-top: 41.4vw;
-  padding-left: 9.95vw;
+  padding-top: 41.5vw;
+  padding-left: 5.2vw;
 }
 .number4 {
   font-family: 'Helvetica';
@@ -79,8 +90,8 @@ body {
   color: #fff;
   font-size: 1.172vw;
   position: absolute;
-  padding-top: 41.4vw;
-  padding-left: 85.9vw;
+  padding-top: 41.5vw;
+  padding-left: 81vw;
 }
 .Button1 {
   position: absolute;
@@ -89,7 +100,7 @@ body {
   height: 3.8vw;
   justify-content: center;
   align-items: center;
-  border-radius: 21px;
+  border-radius: 1.068vw;
   border: 3px solid #fff;
   top: 38vw;
   left: 46.3vw;
@@ -101,7 +112,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: #fff;
-  border-radius: 13px;
+  border-radius: 0.677vw;
 }
 .slider2 {
   width: 2.969vw;
@@ -114,11 +125,15 @@ body {
   position: relative;
   width: 1.719vw;
   height: 1.719vw;
-  /* background-color: black; */
 }
 .computer {
   width: 28.33vw;
   height: 32.083vw;
+}
+.section2 {
+  width: 91.198vw;
+  height: 39.219vw;
+  padding-top: 21px;
 }
 .oraculBlock {
   position: relative;
@@ -127,17 +142,17 @@ body {
   display: flex;
   justify-content: center;
   border: 3px solid #fff;
-  border-radius: 54px;
-  top: 39px;
-  left: 90px;
+  border-radius: 40px;
 }
 .container {
   display: flex;
   flex-direction: row;
-  width: 1.979vw;
+  width: 13.542vw;
   height: 5.885vw;
-  padding-top: 39px;
-  padding-bottom: 90px;
+  padding-top: 14.583vw;
+  padding-left: 1vw;
+  gap: 1.9vw;
+  align-items: flex-end;
 }
 .infograph1 {
   position: relative;
@@ -145,4 +160,139 @@ body {
   height: 5.885vw;
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   border-radius: 2.604vw;
+}
+.infograph2 {
+  position: relative;
+  width: 1.979vw;
+  height: 2.917vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  border-radius: 2.604vw;
+}
+.infograph3 {
+  position: relative;
+  width: 1.979vw;
+  height: 5.885vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  border-radius: 2.604vw;
+}
+.infograph4 {
+  position: relative;
+  width: 1.979vw;
+  height: 4.219vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  border-radius: 2.604vw;
+}
+.krest5 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 3.177vw;
+  padding-left: 0;
+}
+.krest6 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 3.177vw;
+  padding-left: 7vw;
+}
+.krest7 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 3.177vw;
+  padding-left: 81.2vw;
+}
+.krest8 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 3.177vw;
+  padding-left: 88.2vw;
+}
+.subscribitionLine {
+  display: flex;
+  flex-direction: row;
+  padding-top: 1.7vw;
+  padding-left: 13.594vw;
+  gap: 1.2vw;
+}
+.button {
+  position: relative;
+  width: 11.354vw;
+  height: 5.417vw;
+  display: flex;
+  justify-content: center;
+  border: 3px solid #fff;
+  border-radius: 2vw;
+}
+.section3 {
+  width: 91.8vw;
+  height: 44.479vw;
+  padding-top: 5.2vw;
+  display: flex;
+  flex-direction: row;
+  gap: 2.5vw;
+}
+.pixelSquare {
+  width: 44.594svw;
+  height: 43.594vw;
+}
+.rightBlock {
+  width: 44.115vw;
+  height: 44.479vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vw;
+}
+.cardBlock {
+  position: relative;
+  width: 44.115vw;
+  height: 25.729vw;
+  display: flex;
+  justify-content: center;
+  border: 3px solid #fff;
+  border-radius: 3.1vw;
+}
+.cardModel {
+  position: relative;
+  width: 43.958vw;
+  height: 16.406vw;
+  display: flex;
+  border: 3px solid #fff;
+  border-radius: 3.1vw;
+}
+.orangeCard1 {
+  position: absolute;
+  width: 10.104vw;
+  height: 15.781vw;
+  border-radius: 1.563vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  margin-top: 1.1vw;
+  margin-left: -0.521vw;
+}
+.orangeCard2 {
+  position: absolute;
+  width: 10.104vw;
+  height: 15.781vw;
+  border-radius: 1.563vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  margin-top: 4.6vw;
+  margin-left: 5.3vw;
+}
+.orangeCard3 {
+  position: absolute;
+  width: 10.104vw;
+  height: 15.781vw;
+  border-radius: 1.563vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  margin-top: 8.6vw;
+  margin-left: 12.4vw;
+}
+.model {
+  position: absolute;
+  width: 18.906vw;
+  height: 18.906vw;
+  margin-top: -1.5vw;
+  margin-left: 25vw;
 }
