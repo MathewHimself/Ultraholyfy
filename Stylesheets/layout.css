@@ -134,7 +134,7 @@ body::before {
 .section2 {
   width: 91.198vw;
   height: 39.219vw;
-  padding-top: 21px;
+  padding-top: 1.979vw;
 }
 .oraculBlock {
   position: relative;
@@ -214,9 +214,9 @@ body::before {
 .subscribitionLine {
   display: flex;
   flex-direction: row;
-  padding-top: 1.7vw;
+  padding-top: 2vw;
   padding-left: 13.594vw;
-  gap: 1.2vw;
+  gap: 1.5vw;
 }
 .button {
   position: relative;
@@ -296,4 +296,295 @@ body::before {
   height: 18.906vw;
   margin-top: -1.5vw;
   margin-left: 25vw;
+}
+.section4 {
+  width: 91.198vw;
+  height: 49.948vw;
+  padding-top: 4.4vw;
+}
+.krest9 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-left: 0.3vw;
+}
+.krest10 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 46.823vw;
+  padding-left: 0.3vw;
+}
+.krest11 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-left: 88.2vw;
+}
+.krest12 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 46.823vw;
+  padding-left: 88.2vw;
+}
+.name1 {
+  position: absolute;
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 0.2vw;
+  padding-left: 36vw;
+}
+.name2 {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform-origin: bottom left;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 9.4vw;
+  padding-left: 3vw;
+  transform: rotate(90deg);
+}
+.name3 {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-right: 9.4vw;
+  padding-left: 66vw;
+}
+.name4 {
+  position: absolute;
+  color: #fff;
+  transform-origin: center center;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 47.5vw;
+  padding-left: 37vw;
+}
+.number5 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 1vw;
+  padding-left: 12vw;
+}
+.number6 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 1vw;
+  padding-left: 67vw;
+}
+.number7 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 1vw;
+  padding-left: 71.9vw;
+}
+.number8 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 48.4vw;
+  padding-left: 69.5vw;
+}
+.number9 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 48.4vw;
+  padding-left: 19.2vw;
+}
+.number10 {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform-origin: bottom left;
+  font-family: Helvetica;
+  font-size: 1.172vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 3vw;
+  padding-left: 3vw;
+  transform: rotate(90deg);
+}
+.number11 {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform-origin: bottom left;
+  font-family: Helvetica;
+  font-size: 1.172vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 3vw;
+  padding-left: 34.4vw;
+  transform: rotate(90deg);
+}
+.computer2 {
+  width: 55.417vw;
+  height: 31.198vw;
+  padding-top: 10vw;
+  padding-left: 17vw;
+}
+
+.section5 {
+  width: 90.625vw;
+  height: 27vw;
+  padding-top: 3vw;
+  position: relative;
+  display: flex;
+  gap: 1.51vw;
+}
+.battery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 21.5vw;
+  height: 26.615vw;
+  border-radius: 2.813vw;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+}
+.batteryBorder {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 18.698vw;
+  height: 23.854vw;
+  border-radius: 2.813vw;
+  border: 3px solid #fff;
+}
+.lightIcon {
+  position: relative;
+  width: 5.781vw;
+  height: 9.427vw;
+}
+.percent {
+  position: relative;
+  font-family: 'Helvetica';
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.5;
+  font-size: 2.344vw;
+  position: absolute;
+  padding-top: 19vw;
+}
+.line {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 67.604vw;
+  gap: 1.51vw;
+}
+.moneyRain {
+  position: relative;
+  height: 15.833vw;
+  display: flex;
+  border-radius: 2.813vw;
+  border: 3px solid #fff;
+}
+.rainButton {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 8.646vw;
+  height: 5.417vw;
+  border-radius: 1.771vw;
+  margin-top: 1.7vw;
+  margin-left: 29.5vw;
+  flex-direction: row;
+}
+.rainIcon {
+  background-color: black;
+  position: relative;
+  width: 4.323vw;
+  height: 4.323vw;
+  border-radius: 1.172vw;
+}
+.typeText {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 9.323vw;
+  border-radius: 2.813vw;
+  background-color: #fff;
+}
+.typing {
+  color: #000;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 700;
+}
+.section6 {
+  width: 90.625vw;
+  height: 44.531vw;
+  padding-top: 1.7vw;
+  gap: 1.7vw;
+}
+.memo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7vw;
+}
+
+/* строка */
+.row {
+  display: flex;
+  gap: 1.7vw;
+}
+
+/* карточка */
+.card {
+  width: 9.7vw;
+  height: 9.7vw;
+  border-radius: 2.8vw;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* активные (оранжевые) */
+.card.active {
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  border: none;
 }
