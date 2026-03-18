@@ -613,6 +613,21 @@ body::before {
   height: 48.229vw;
   padding-top: 4.4vw;
 }
+
+.camera1 {
+  position: absolute;
+  width: 36.823vw;
+  height: 36.823vw;
+  top: 10vw;
+  left: 4.5vw;
+}
+.camera2 {
+  position: absolute;
+  width: 40.885vw;
+  height: 40.885vw;
+  top: 8.1vw;
+  left: 48.2vw;
+}
 .krest13 {
   position: absolute;
   width: 2.9vw;
@@ -682,17 +697,46 @@ body::before {
 .section8 {
   display: flex;
   position: relative;
+  justify-content: center;
   width: 90.625vw;
-  height: 45.781vw;
+  height: 41vw;
   padding-top: 4.4vw;
   border-radius: 2.8vw;
   border: 3px solid #fff;
   top: 1.563vw;
 }
+.dices {
+  position: absolute;
+  width: 33.073vw;
+  height: 33.073vw;
+  top: 1.4vw;
+  padding-left: 1vw;
+  z-index: 2;
+}
+.spinletter {
+  position: absolute;
+  width: 41.719vw;
+  height: 5.99vw;
+  top: 16vw;
+  left: 24.5vw;
+  z-index: 1;
+}
+.spinButton2 {
+  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 86.146vw;
+  height: 7.344vw;
+  top: 31.5vw;
+  left: 0vw;
+  background-color: #fff;
+  border-radius: 1.25vw;
+}
 .section9 {
   display: flex;
   position: relative;
   width: 90.625vw;
-  height: 45.781vw;
-  padding-top: 4.4vw;
+  height: 20vw;
+  top: 4.4vw;
 }
