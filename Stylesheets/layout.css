@@ -354,7 +354,6 @@ body::before {
   transform: rotate(90deg);
 }
 .name3 {
-  display: inline-block;
   position: absolute;
   color: #fff;
   transform: rotate(-90deg);
@@ -364,7 +363,7 @@ body::before {
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  padding-right: 9.4vw;
+  top: 9.4vw;
   padding-left: 66vw;
 }
 .name4 {
@@ -739,4 +738,138 @@ body::before {
   width: 90.625vw;
   height: 20vw;
   top: 4.4vw;
+}
+.hseLogo {
+  position: absolute;
+  width: 15.885vw;
+  height: 6.406vw;
+  top: 5.5vw;
+  left: 74.2vw;
+}
+.kurator1 {
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 1.354vw;
+  font-weight: 700;
+  padding-top: 8.5vw;
+  padding-left: 1.5vw;
+  line-height: 1.7vw;
+}
+.kurator2 {
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 1.354vw;
+  font-weight: 700;
+  padding-top: 8.5vw;
+  padding-left: 6vw;
+  line-height: 1.7vw;
+}
+.kurator3 {
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 1.354vw;
+  font-weight: 700;
+  padding-top: 8.5vw;
+  padding-left: 6vw;
+  line-height: 1.7vw;
+}
+.krest17 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 0vw;
+  padding-left: 0.5vw;
+}
+.krest18 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 0vw;
+  padding-left: 88.2vw;
+}
+.krest19 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 17vw;
+  padding-left: 0.5vw;
+}
+.krest20 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 17vw;
+  padding-left: 88.2vw;
+}
+.number15 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 0.2vw;
+  padding-left: 22.3vw;
+}
+.number16 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 0.2vw;
+  padding-left: 32.9vw;
+}
+.number17 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 0.2vw;
+  padding-left: 46.5vw;
+}
+.number18 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 0.2vw;
+  padding-left: 60.5vw;
+}
+.number19 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 17.8vw;
+  padding-left: 22vw;
+}
+.number20 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 17.8vw;
+  padding-left: 34vw;
+}
+.number21 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 17.8vw;
+  padding-left: 47vw;
+}
+.number22 {
+  font-family: 'Helvetica';
+  font-weight: 300;
+  color: #fff;
+  font-size: 1.172vw;
+  position: absolute;
+  padding-top: 17.8vw;
+  padding-left: 60vw;
 }
