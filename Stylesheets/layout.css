@@ -111,6 +111,7 @@ body::before {
   width: 2.969vw;
   height: 2.969vw;
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: #fff;
   border-radius: 0.677vw;
@@ -119,6 +120,7 @@ body::before {
   width: 2.969vw;
   height: 2.969vw;
   display: flex;
+  align-items: center;
   justify-content: center;
   border-radius: 13px;
 }
@@ -595,14 +597,26 @@ body::before {
   display: flex;
   position: relative;
   align-items: center;
+  justify-content: center;
   width: 44.479vw;
   height: 44.479vw;
   background-color: #fff;
   border-radius: 2.813vw;
 }
 .walls {
+  position: relative;
   width: 33.333vw;
   height: 33.333vw;
+}
+
+.player {
+  background-color: black;
+  position: absolute;
+  width: 2.656vw;
+  height: 2.656vw;
+  border-radius: 0.781vw;
+  top: 13vw;
+  left: 4vw;
 }
 
 .section7 {
@@ -694,9 +708,12 @@ body::before {
   padding-left: 36vw;
 }
 .section8 {
+  cursor: pointer;
+  user-select: none;
   display: flex;
   position: relative;
   justify-content: center;
+  align-items: center;
   width: 90.625vw;
   height: 41vw;
   padding-top: 4.4vw;
@@ -714,23 +731,135 @@ body::before {
 }
 .spinletter {
   position: absolute;
-  width: 41.719vw;
-  height: 5.99vw;
-  top: 16vw;
-  left: 24.5vw;
+  width: 62.552vw;
+  height: 9.01vw;
+  top: 14.5vw;
   z-index: 1;
 }
 .spinButton2 {
   position: relative;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-  width: 86.146vw;
+  width: 57.813vw;
   height: 7.344vw;
-  top: 31.5vw;
-  left: 0vw;
+  top: 15vw;
+  border: 3px solid #fff;
+  border-radius: 2.344vw;
+  gap: 0.365vw;
+}
+.whiteSquare {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 5.99vw;
+  height: 5.99vw;
   background-color: #fff;
-  border-radius: 1.25vw;
+  border-radius: 1.146vw;
+  z-index: 1;
+}
+.arrowsicon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.plusicon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.elevatoricon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.arrowsicon2 {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.elevatoricon2 {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.plusicon2 {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.moonicon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.circlearrowsicon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+.plusicon3 {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+/* Лёгкий отклик при нажатии */
+.section8:active {
+  opacity: 0.92;
+}
+
+/* Во время вращения — курсор ожидания */
+.section8.section8--spinning {
+  cursor: wait;
+}
+
+/* Скрываем иконки за пределами полосы */
+.spinButton2 {
+  overflow: hidden;
+}
+
+/* Трек: flex-ряд иконок */
+.roulette-track {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.365vw;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  will-change: transform;
+}
+
+/* Каждая иконка в треке */
+.roulette-icon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: filter 0.08s ease;
+  filter: invert(0);
+}
+
+/* Иконка под белым квадратом → чёрная */
+.roulette-icon.over-white {
+  filter: invert(1);
+}
+
+/* Белый квадрат поверх всего, не мешает кликам */
+.whiteSquare {
+  z-index: 10;
+  pointer-events: none;
 }
 .section9 {
   display: flex;
