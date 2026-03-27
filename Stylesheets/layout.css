@@ -518,25 +518,38 @@ body::before {
   border-radius: 2.813vw;
   border: 3px solid #fff;
 }
-.rainButton {
+.rainSlider {
   position: relative;
   display: flex;
+  flex-direction: row;
+  gap: 0.365vw;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  width: 8.646vw;
-  height: 5.417vw;
-  border-radius: 1.771vw;
-  margin-top: 1.7vw;
-  margin-left: 29.5vw;
+  width: 10.6vw;
+  height: 3.8vw;
+  border: 3px solid #fff;
+  border-radius: 1.4vw;
+  margin-top: 1.8vw;
+  margin-left: 28.3vw;
   flex-direction: row;
 }
-.rainIcon {
-  background-color: black;
+.rainButton {
+  position: absolute;
+  background-color: #fff;
   position: relative;
-  width: 4.323vw;
-  height: 4.323vw;
-  border-radius: 1.172vw;
+  width: 2.969vw;
+  height: 2.969vw;
+  border-radius: 0.781vw;
+  z-index: 1;
+  left: -9.5vw;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.rainIcon {
+  position: relative;
+  width: 2.969vw;
+  height: 2.969vw;
+  mix-blend-mode: difference;
+  z-index: 2;
 }
 .typeText {
   position: relative;
@@ -711,6 +724,7 @@ body::before {
   cursor: pointer;
   user-select: none;
   display: flex;
+  flex-direction: column;
   position: relative;
   justify-content: center;
   align-items: center;
@@ -747,6 +761,7 @@ body::before {
   border: 3px solid #fff;
   border-radius: 2.344vw;
   gap: 0.365vw;
+  top: 29.2vw;
 }
 .whiteSquare {
   position: absolute;
@@ -757,109 +772,129 @@ body::before {
   background-color: #fff;
   border-radius: 1.146vw;
   z-index: 1;
+  pointer-events: none;
 }
-.arrowsicon {
+.casinoPopup {
   position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 57.813vw;
+  height: 28.177vw;
+  border: 3px solid #fff;
+  border-radius: 2.3vw;
+  backdrop-filter: blur(50px);
+  top: -7.5vw;
+  z-index: 3;
 }
-.plusicon {
+.quote {
+  display: flex;
   position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  width: 10.781vw;
+  height: 10.781vw;
+  background-color: #fff;
+  border-radius: 2.3vw;
+  z-index: 3;
+  top: -1vw;
 }
-.elevatoricon {
+.Header {
   position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 1.563vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  top: -0.2vw;
 }
-.arrowsicon2 {
+.popupIcon {
   position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
+  width: 10.781vw;
+  height: 10.781vw;
+  mix-blend-mode: difference;
 }
-.elevatoricon2 {
+.quoteText {
   position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
-}
-.plusicon2 {
-  position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
-}
-.moonicon {
-  position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
-}
-.circlearrowsicon {
-  position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
-}
-.plusicon3 {
-  position: relative;
-  width: 5.99vw;
-  height: 5.99vw;
-  z-index: 2;
-}
-/* Лёгкий отклик при нажатии */
-.section8:active {
-  opacity: 0.92;
+  color: #fff;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 1.042vw;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: lowercase;
 }
 
-/* Во время вращения — курсор ожидания */
-.section8.section8--spinning {
+.icon {
+  position: relative;
+  width: 5.99vw;
+  height: 5.99vw;
+  z-index: 2;
+}
+
+/* Кликабельность section8 */
+.section8 {
+  cursor: pointer;
+  user-select: none;
+}
+.section8:active {
+  opacity: 0.9;
+}
+.section8.spinning {
   cursor: wait;
 }
 
-/* Скрываем иконки за пределами полосы */
+/* spinButton2: скрываем иконки за краями и убираем flex-gap
+   (gap теперь живёт только в roulette-track) */
 .spinButton2 {
   overflow: hidden;
+  gap: 0; /* gap переехал в трек */
 }
 
-/* Трек: flex-ряд иконок */
+/* whiteSquare: по центру, z-index НИЖЕ трека */
+.whiteSquare {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 5.99vw;
+  height: 5.99vw;
+  background-color: #fff;
+  border-radius: 1.146vw;
+  z-index: 1; /* ниже трека */
+  pointer-events: none;
+}
+
+/* Трек: абсолютно позиционирован, вертикально центрирован через top+translateY */
 .roulette-track {
   position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%); /* JS перезапишет на translateX + translateY */
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 0.365vw;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  z-index: 2; /* выше whiteSquare */
   will-change: transform;
 }
 
-/* Каждая иконка в треке */
-.roulette-icon {
-  position: relative;
+/* Иконки в треке */
+.roulette-track img {
+  flex-shrink: 0;
   width: 5.99vw;
   height: 5.99vw;
-  z-index: 2;
-  flex-shrink: 0;
-  transition: filter 0.08s ease;
-  filter: invert(0);
+  display: block;
 }
 
-/* Иконка под белым квадратом → чёрная */
-.roulette-icon.over-white {
-  filter: invert(1);
-}
-
-/* Белый квадрат поверх всего, не мешает кликам */
-.whiteSquare {
-  z-index: 10;
-  pointer-events: none;
+/* Эффект чёрного цвета при проходе над белым квадратом.
+   mix-blend-mode: difference делает это автоматически:
+   белая иконка над белым фоном = чёрная, без JS */
+.roulette-track {
+  mix-blend-mode: difference;
 }
 .section9 {
   display: flex;
