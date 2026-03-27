@@ -8,7 +8,7 @@ body {
   align-items: center;
 }
 
-body::before {
+/* body::before {
   content: '';
   position: absolute;
   top: 0;
@@ -20,20 +20,20 @@ body::before {
   background-size: cover;
   opacity: 0.3;
   z-index: 0;
-}
-/* body::before {
+} */
+body::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../Images/mobile.jpg');
+  /* background-image: url('../Images/mobile.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.3;
   z-index: 0;
-} */
+}
 .section1 {
   width: 90.625vw;
   height: 43.073vw;
@@ -418,6 +418,7 @@ body::before {
 }
 
 .section3 {
+  position: relative;
   width: 91.8vw;
   height: 44.479vw;
   padding-top: 5.2vw;
@@ -453,6 +454,21 @@ body::before {
   border: 3px solid #fff;
   border-radius: 3.1vw;
 }
+.addCrest1 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 10vw;
+}
+.addCrest2 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 20vw;
+}
+
 .orangeCard1 {
   position: absolute;
   width: 10.104vw;
@@ -488,6 +504,7 @@ body::before {
   margin-left: 25vw;
 }
 .section4 {
+  position: relative;
   width: 91.198vw;
   height: 49.948vw;
   padding-top: 4.4vw;
@@ -522,7 +539,7 @@ body::before {
   position: absolute;
   color: #fff;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -535,7 +552,7 @@ body::before {
   color: #fff;
   transform-origin: bottom left;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -549,7 +566,7 @@ body::before {
   transform: rotate(-90deg);
   transform-origin: center center;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -561,7 +578,7 @@ body::before {
   color: #fff;
   transform-origin: center center;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -752,11 +769,12 @@ body::before {
   color: #000;
   text-align: center;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 700;
 }
 .section6 {
+  position: relative;
   display: flex;
   flex-direction: row;
   /* gap: 0vw; */
@@ -901,7 +919,7 @@ body::before {
   position: absolute;
   color: #fff;
   font-family: Helvetica;
-  font-size: 45px;
+  font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
@@ -1098,31 +1116,52 @@ body::before {
   top: 5.5vw;
   left: 74.2vw;
 }
+.textContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 4.5vw;
+  padding-top: 8.5vw;
+}
+.textContainer2 {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 4.5vw;
+  padding-top: 0vw;
+  padding-left: 22.3vw;
+}
+.textContainer3 {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 4.5vw;
+  padding-top: 17.8vw;
+  padding-left: 22vw;
+}
+
 .kurator1 {
+  position: relative;
   color: #fff;
   font-family: Helvetica;
   font-size: 1.354vw;
   font-weight: 700;
-  padding-top: 8.5vw;
-  padding-left: 1.5vw;
   line-height: 1.7vw;
 }
 .kurator2 {
+  position: relative;
   color: #fff;
   font-family: Helvetica;
   font-size: 1.354vw;
   font-weight: 700;
-  padding-top: 8.5vw;
-  padding-left: 6vw;
   line-height: 1.7vw;
 }
 .kurator3 {
+  position: relative;
   color: #fff;
   font-family: Helvetica;
   font-size: 1.354vw;
   font-weight: 700;
-  padding-top: 8.5vw;
-  padding-left: 6vw;
   line-height: 1.7vw;
 }
 .krest17 {
@@ -1158,70 +1197,54 @@ body::before {
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 0.2vw;
-  padding-left: 22.3vw;
+  position: relative;
 }
 .number16 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 0.2vw;
-  padding-left: 32.9vw;
+  position: relative;
 }
 .number17 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 0.2vw;
-  padding-left: 46.5vw;
+  position: relative;
 }
 .number18 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 0.2vw;
-  padding-left: 60.5vw;
+  position: relative;
 }
 .number19 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 17.8vw;
-  padding-left: 22vw;
+  position: relative;
 }
 .number20 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 17.8vw;
-  padding-left: 34vw;
+  position: relative;
 }
 .number21 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 17.8vw;
-  padding-left: 47vw;
+  position: relative;
 }
 .number22 {
   font-family: 'Helvetica';
   font-weight: 300;
   color: #fff;
   font-size: 1.172vw;
-  position: absolute;
-  padding-top: 17.8vw;
-  padding-left: 60vw;
+  position: relative;
 }

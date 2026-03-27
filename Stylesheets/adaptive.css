@@ -1,5 +1,626 @@
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .Button1 {
     border: 1px solid #fff;
+    width: 11.719vw;
+    height: 6.38vw;
+    top: 60.7vw;
+    left: 44.3vw;
+    gap: 0.365vw;
+  }
+  .stackicon {
+    width: 1.719vw;
+    height: 1.719vw;
+  }
+  .slider1 {
+    width: 4.688vw;
+    height: 4.688vw;
+    display: flex;
+  }
+  .slider2 {
+    width: 4.688vw;
+    height: 4.688vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+  }
+  .squareicon {
+    width: 2.734vw;
+    height: 2.734vw;
+  }
+  .stackicon {
+    width: 2.734vw;
+    height: 2.734vw;
+  }
+} */
+@media screen and (max-width: 768px) {
+  /* Фоновое изображение → мобильный вариант */
+  /* body::before {
+    background-image: url('../Images/mobile.jpg');
+  } */
+
+  /* Секция становится выше: ~65.5vw (пропорция макета 503/768) */
+  .section1 {
+    width: 90.625vw;
+    height: 65.5vw;
+  }
+
+  /* Кресты — верхние остаются, нижние съезжают вниз пропорционально */
+  .krest1 {
+    width: 3.9vw;
+    height: 4.2vw;
+    padding-top: 1.8vw;
+  }
+  .krest2 {
+    width: 3.9vw;
+    height: 4.2vw;
+    padding-top: 61.3vw;
+  }
+  .krest3 {
+    width: 3.9vw;
+    height: 4.2vw;
+    padding-top: 1.8vw;
+    padding-left: 86.7vw;
+  }
+  .krest4 {
+    width: 3.9vw;
+    height: 4.2vw;
+    padding-top: 61.3vw;
+    padding-left: 86.7vw;
+  }
+
+  /* Karma SVG: выше и крупнее под новую высоту секции */
+  .karma {
+    width: 82vw;
+    height: 20vw;
+    padding-top: 22vw;
+    padding-left: 4.5vw;
+  }
+
+  /* Числа: верхние — рядом с крестами, нижние — у дна секции */
+  .number1 {
+    font-size: 1.5vw;
+    padding-top: 2.8vw;
+    padding-left: 5.5vw;
+  }
+  .number2 {
+    font-size: 1.5vw;
+    padding-top: 2.8vw;
+    padding-left: 77.5vw;
+  }
+  .number3 {
+    font-size: 1.5vw;
+    padding-top: 63vw;
+    padding-left: 5.5vw;
+  }
+  .number4 {
+    font-size: 1.5vw;
+    padding-top: 63vw;
+    padding-left: 79.5vw;
+  }
+
+  /* Кнопка-переключатель: чуть крупнее, опущена вниз */
+  .Button1 {
+    width: 10vw;
+    height: 5.2vw;
+    border-radius: 1.5vw;
+    top: 58.5vw;
+    left: 45.2vw;
+    gap: 0.5vw;
+    border: 1px solid #fff;
+  }
+  .slider1,
+  .slider2 {
+    width: 4.1vw;
+    height: 4.1vw;
+    border-radius: 0.9vw;
+  }
+  .squareicon,
+  .stackicon {
+    width: 2.4vw;
+    height: 2.4vw;
+  }
+  .section2 {
+    width: 91.198vw;
+    height: 53vw;
+    padding-top: 2.2vw;
+  }
+
+  /* Блок-рамка: выше, чтобы вместить подросшие бары */
+  .oraculBlock {
+    width: 90.781vw;
+    height: 40vw;
+    border-radius: 2.6vw;
+    border: 1px solid #fff;
+  }
+
+  /* Контейнер баров: расширяем до ~88% ширины блока */
+  .inlineContainer {
+    width: 82vw;
+    height: 36vw;
+    gap: 1.8vw;
+  }
+
+  /* Все карточки-лейблы (infUp) — шире и пропорционально выше */
+  .infUp,
+  .infUp2,
+  .infUp3,
+  .infUp4,
+  .infUp5 {
+    width: 14.5vw;
+    height: 8.6vw;
+    border-radius: 2.3vw;
+    gap: 0.8vw;
+  }
+
+  /* Заголовки % */
+  .infHeader,
+  .infHeader2,
+  .infHeader3,
+  .infHeader4,
+  .infHeader5 {
+    font-size: 2.6vw;
+  }
+
+  /* Подписи под % — с px на vw */
+  .infText,
+  .infText2,
+  .infText3,
+  .infText4,
+  .infText5 {
+    font-size: 1.8vw;
+  }
+
+  /* Оранжевые столбики: шире + высоты пересчитаны (×1.29 от desktop) */
+  .infBottom1 {
+    width: 14.5vw;
+    height: 17vw;
+    border-radius: 2.3vw 2.3vw 0 0;
+  }
+  .infBottom2 {
+    width: 14.5vw;
+    height: 15.7vw;
+    border-radius: 2.3vw 2.3vw 0 0;
+  }
+  .infBottom3 {
+    width: 14.5vw;
+    height: 18.1vw;
+    border-radius: 2.3vw 2.3vw 0 0;
+  }
+  .infBottom4 {
+    width: 14.5vw;
+    height: 14.5vw;
+    border-radius: 2.3vw 2.3vw 0 0;
+  }
+  .infBottom5 {
+    width: 14.5vw;
+    height: 17vw;
+    border-radius: 2.3vw 2.3vw 0 0;
+  }
+
+  /* Кресты секции 2: только крайние видны — левый и правый */
+  .krest5,
+  .krest6,
+  .krest7,
+  .krest8 {
+    display: none;
+  }
+
+  /* Ряд кнопок подписок: кнопки шире, центрированы */
+  .subscribitionLine {
+    padding-top: 2.2vw;
+    padding-left: 4vw;
+    gap: 1.4vw;
+  }
+  .button {
+    width: 14.5vw;
+    height: 6.9vw;
+    border-radius: 2.3vw;
+    border: 1px solid #fff;
+  }
+  .levelIcon {
+    width: 4.7vw;
+    height: 4.7vw;
+  }
+  /* .section3 {
+    flex-direction: column;
+  } */
+  .section3 {
+    width: 100vw;
+    height: auto;
+    padding-bottom: 2vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+    top: -6vw;
+  }
+
+  .pixelSquare {
+    width: 90.781vw;
+    height: 90.781vw;
+    object-fit: contain;
+  }
+
+  .rightBlock {
+    width: 90.781vw;
+    height: auto;
+  }
+
+  .cardBlock {
+    width: 100%;
+    height: 38vw;
+    border-radius: 4vw;
+  }
+
+  .cardModel {
+    width: 100%;
+    height: 38vw;
+    border-radius: 4vw;
+  }
+
+  /* .orangeCard1,
+  .orangeCard2,
+  .orangeCard3 {
+    width: 22vw;
+    height: 34vw;
+    border-radius: 3vw;
+  }
+
+  .orangeCard1 {
+    margin-top: 2vw;
+    margin-left: -1.5vw;
+  }
+  .orangeCard2 {
+    margin-top: 7vw;
+    margin-left: 8vw;
+  }
+  .orangeCard3 {
+    margin-top: 12vw;
+    margin-left: 18vw;
+  } */
+
+  /* Уменьшенные оранжевые карточки на мобильных */
+  .orangeCard1,
+  .orangeCard2,
+  .orangeCard3 {
+    width: 19vw; /* пропорционально меньше */
+    height: 29vw;
+    border-radius: 3vw;
+  }
+
+  .model {
+    width: 45vw;
+    height: 45vw;
+    margin-top: -4vw;
+    margin-left: 23vw;
+  }
+  .addCrest1 {
+    width: 5.125vw;
+    height: 5.125vw;
+    padding-top: 17vw;
+    left: 12vw;
+  }
+  .addCrest2 {
+    width: 5.125vw;
+    height: 5.125vw;
+    padding-top: 17vw;
+    left: 75vw;
+  }
+  .section4 {
+    top: -10vw;
+  }
+  .number10,
+  .number11,
+  .name2 {
+    display: none;
+  }
+  .krest10,
+  .krest12,
+  .number9,
+  .number8,
+  .name4 {
+    top: 40vw;
+  }
+  .computer2 {
+    width: 100.12vw;
+    height: 56.576vw;
+    padding-top: 10vw;
+    margin-left: -21vw;
+  }
+  .section5 {
+    width: 91.885vw;
+    height: 49.476vw;
+    padding-top: 3vw;
+    gap: 1.51vw;
+    top: 25vw;
+  }
+  .battery {
+    width: 53.714vw;
+    height: 49.219vw;
+    border-radius: 5.236vw;
+  }
+  .batteryBorder {
+    width: 32.167vw;
+    height: 42.8vw;
+    border-radius: 5.236vw;
+    border: 3px solid #fff;
+  }
+  .lightIcon {
+    width: 10.602vw;
+    height: 17.539vw;
+  }
+  .percent {
+    opacity: 0.5;
+    font-size: 4.319vw;
+    padding-top: 25vw;
+  }
+  .moneyRain {
+    width: 49.215vw;
+    height: 29.319vw;
+    border-radius: 5.236vw;
+    border: 3px solid #fff;
+  }
+  .rainSlider {
+    gap: 0.365vw;
+    width: 19.661vw;
+    height: 7.552vw;
+    border: 3px solid #fff;
+    border-radius: 1.953vw;
+    margin-top: 1.8vw;
+    margin-left: 13.7vw;
+  }
+  .typeText {
+    width: 49.215vw;
+    height: 17.277vw;
+    border-radius: 5.236vw;
+    background-color: #fff;
+  }
+  .typing {
+    color: #000;
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 2.865vw;
+    font-style: normal;
+    font-weight: 700;
+  }
+  .rainIcon {
+    width: 5.599vw;
+    height: 5.599vw;
+  }
+  .rainButton {
+    position: absolute;
+    width: 5.599vw;
+    height: 5.599vw;
+    border-radius: 0.781vw;
+    left: 1.2vw;
+  }
+  .section6 {
+    flex-direction: column;
+    width: 91.406vw;
+    height: 185.547vw;
+    top: 25vw;
+  }
+  .labirinth {
+    width: 91.406vw;
+    height: 91.406vw;
+    border-radius: 5.236vw;
+    order: -1;
+  }
+  .walls {
+    position: relative;
+    width: 67.188vw;
+    height: 67.448vw;
+  }
+  .player {
+    width: 5.339vw;
+    height: 5.339vw;
+    border-radius: 1.563vw;
+    top: 27vw;
+    left: 10.5vw;
+  }
+  .memo {
+    order: 0;
+  }
+  .card {
+    width: 21vw;
+    height: 21vw;
+    border-radius: 5.729vw;
+    border: 3px solid #fff;
+  }
+  .section7 {
+    width: 91.406vw;
+    height: 80vw;
+    padding-top: 4.4vw;
+  }
+  .krest13 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 25svw;
+    padding-left: 0.5vw;
+  }
+  .krest14 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 77vw;
+    padding-left: 0.5vw;
+  }
+  .krest15 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 25vw;
+    padding-left: 88vw;
+  }
+  .krest16 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 77vw;
+    padding-left: 88vw;
+  }
+  .camera1 {
+    position: absolute;
+    width: 45.443vw;
+    height: 45.443vw;
+    top: 34vw;
+    left: 1vw;
+  }
+  .camera2 {
+    position: absolute;
+    width: 50.521vw;
+    height: 50.521vw;
+    top: 32vw;
+    left: 44.2vw;
+  }
+  .number12 {
+    font-size: 1.172vw;
+    padding-top: 25vw;
+    padding-left: 29vw;
+  }
+  .number13 {
+    font-size: 1.172vw;
+    padding-top: 25vw;
+    padding-left: 46vw;
+  }
+  .number14 {
+    font-size: 1.172vw;
+    padding-top: 25vw;
+    padding-left: 52.7vw;
+  }
+  .name5 {
+    font-size: 2.604vw;
+    padding-top: 77vw;
+    padding-left: 36vw;
+  }
+  .section8 {
+    width: 92.839vw;
+    height: 92.839vw;
+    border-radius: 4.948vw;
+  }
+  .dices {
+    width: 69.271vw;
+    height: 69.271vw;
+    top: 5.4vw;
+    padding-left: 1vw;
+  }
+  .spinletter {
+    width: 88.802vw;
+    height: 34.453vw;
+    top: 29.5vw;
+  }
+  .spinButton2 {
+    overflow: hidden;
+    width: 67.448vw;
+    height: 15.234vw;
+    top: 15vw;
+    border: 3px solid #fff;
+    border-radius: 4.948vw;
+    gap: 0.365vw;
+    top: 60.2vw;
+  }
+  .icon {
+    position: relative;
+    width: 12.5vw;
+    height: 12.5vw;
+    z-index: 2;
+  }
+  .whiteSquare {
+    width: 12.5vw;
+    height: 12.5vw;
+    border-radius: 2.604vw;
+  }
+  .roulette-track img {
+    width: 12.5vw;
+    height: 12.5vw;
+    display: block;
+  }
+  .casinoPopup {
+    width: 67.057vw;
+    height: 44.401vw;
+    border: 3px solid #fff;
+    border-radius: 4.557vw;
+    top: -2.5vw;
+  }
+  .quote {
+    width: 20.833vw;
+    height: 20.833vw;
+    background-color: #fff;
+    border-radius: 4.167vw;
+    top: -1vw;
+  }
+  .popupIcon {
+    width: 20.833vw;
+    height: 20.833vw;
+  }
+  .Header {
+    font-size: 2.995vw;
+    top: -0.2vw;
+  }
+  .quoteText {
+    font-size: 1.953vw;
+  }
+  .krest17 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 0vw;
+    padding-left: 0.5vw;
+  }
+  .krest18 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 0vw;
+    padding-left: 88.2vw;
+  }
+  .krest19 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 37vw;
+    padding-left: 0.5vw;
+  }
+  .krest20 {
+    position: absolute;
+    width: 2.9vw;
+    height: 3.1vw;
+    padding-top: 37vw;
+    padding-left: 88.2vw;
+  }
+  .textContainer {
+    padding-top: 7vw;
+    gap: 2.5vw;
+    flex-direction: column;
+  }
+  .textContainer3 {
+    padding-top: 37vw;
+  }
+  .textContainer3,
+  .textContainer2 {
+    padding-left: 16vw;
+  }
+  .kurator2,
+  .kurator1,
+  .kurator3 {
+    font-size: 2.5vw;
+    line-height: 1.2;
+  }
+  .number15,
+  .number16,
+  .number17,
+  .number18,
+  .number19,
+  .number20,
+  .number21,
+  .number22 {
+    font-size: 1.693vw;
+  }
+  .hseLogo {
+    width: 42.839vw;
+    height: 17.318vw;
+    top: 9.5vw;
+    left: 47.2vw;
   }
 }
