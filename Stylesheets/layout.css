@@ -380,14 +380,43 @@ body::before {
   position: relative;
   width: 91.8vw;
   height: 44.479vw;
-  padding-top: 5.2vw;
+  padding-top: 4.2vw;
   display: flex;
   flex-direction: row;
   gap: 2.5vw;
 }
 .pixelSquare {
+  overflow: hidden;
   width: 44.594svw;
   height: 43.594vw;
+}
+.pixelSquare {
+  cursor: pointer;
+}
+
+.pixelGrid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 0.1vw;
+  box-sizing: border-box;
+}
+
+.pixelCell {
+  border-radius: 1.8vw;
+  transition: filter 0.15s ease;
+}
+
+.pixelCell:hover {
+  filter: brightness(1.35);
+}
+
+.pixelCell.shuffling {
+  transition:
+    filter 0.15s ease,
+    background-color 0.35s ease;
 }
 .rightBlock {
   width: 44.115vw;
@@ -403,7 +432,7 @@ body::before {
   display: flex;
   justify-content: center;
   border: 3px solid #fff;
-  border-radius: 3.1vw;
+  border-radius: 1.8vw;
   overflow: hidden;
 }
 
@@ -453,7 +482,7 @@ body::before {
   height: 16.406vw;
   display: flex;
   border: 3px solid #fff;
-  border-radius: 3.1vw;
+  border-radius: 1.8vw;
 }
 .addCrest1 {
   position: absolute;
@@ -716,10 +745,13 @@ body::before {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
   width: 18.698vw;
   height: 23.854vw;
   border-radius: 2.813vw;
   border: 3px solid #fff;
+}
+.batteryCover {
 }
 .lightIcon {
   position: relative;
