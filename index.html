@@ -135,13 +135,28 @@
     </section>
     <section class="section5">
       <div class="battery">
+        <img
+          class="lightIcon"
+          id="lightIcon"
+          src="Images/lightIcon.svg"
+          alt=""
+        />
         <div class="batteryBorder">
-          <div class="batteryCover"></div>
-          <img class="lightIcon" src="Images/lightIcon.svg" alt="" />
-          <p class="percent">0%</p>
+          <div class="batteryCover" id="batteryCover"></div>
+
+          <p class="percent" id="percentValue">0%</p>
         </div>
       </div>
       <div class="line">
+        <!-- <div class="moneyRain">
+          <div class="rainSlider">
+            <img class="rainIcon" src="Images/circle1.svg" alt="" />
+            <img class="rainIcon" src="Images/circle2.svg" alt="" />
+            <img class="rainIcon" src="Images/circle3.svg" alt="" />
+            <div class="rainButton"></div>
+          </div>
+          <img class="karmaDollar" src="Images/karmadollar.png" alt="" />
+        </div> -->
         <div class="moneyRain">
           <div class="rainSlider">
             <img class="rainIcon" src="Images/circle1.svg" alt="" />
@@ -149,6 +164,15 @@
             <img class="rainIcon" src="Images/circle3.svg" alt="" />
             <div class="rainButton"></div>
           </div>
+          <div class="fallingContainer" id="fallingContainer"></div>
+          <!-- контейнер для падающих элементов -->
+          <img
+            class="karmaDollar"
+            src="Images/karmadollar.png"
+            alt=""
+            style="display: none"
+          />
+          <!-- скрытый оригинал для клонирования -->
         </div>
         <div class="typeText">
           <p class="typing">Напечатать текст</p>

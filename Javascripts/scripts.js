@@ -2,6 +2,7 @@ initRainIconSlider()
 initSubscriptionLevels()
 initRouletteCasino()
 initPixelGrid()
+initBatteryModule()
 function initRainIconSlider() {
   /* RAIN ICONSLIDER */
   const slider = document.querySelector('.rainSlider')
@@ -324,5 +325,176 @@ function initPixelGrid() {
       pixelColors = shuffleArray(pixelColors)
       renderPixelGrid()
     })
+  }
+}
+function initBatteryModule() {
+  // ========== BATTERY MODULE ==========
+  // Получаем элементы батареи
+  const batteryContainer = document.querySelector('.battery')
+  const batteryCover = document.getElementById('batteryCover')
+  const percentElement = document.getElementById('percentValue')
+  const lightIcon = document.getElementById('lightIcon')
+
+  // Текущий уровень заряда (0-100)
+  let currentBatteryLevel = 0
+
+  // Функция анимации увеличения иконки
+  function animateLightIcon() {
+    if (!lightIcon) return
+
+    // Сохраняем исходный размер
+    const originalWidth = lightIcon.offsetWidth
+    const originalHeight = lightIcon.offsetHeight
+
+    // Увеличиваем иконку
+    lightIcon.style.transform = 'translate(-50%, -50%) scale(1.3)'
+    lightIcon.style.transition =
+      'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
+
+    // Возвращаем к исходному размеру через 0.2 секунды
+    setTimeout(() => {
+      lightIcon.style.transform = 'translate(-50%, -50%) scale(1)'
+    }, 200)
+  }
+
+  // Функция обновления батареи (устанавливает уровень в процентах)
+  function updateBatteryLevel(percent) {
+    // Ограничиваем значение от 0 до 100
+    let newLevel = Math.min(100, Math.max(0, percent))
+    let previousLevel = currentBatteryLevel
+    currentBatteryLevel = newLevel
+
+    // Обновляем высоту заливки (batteryCover)
+    if (batteryCover) {
+      batteryCover.style.height = `${newLevel}%`
+    }
+
+    // Обновляем текст процентов
+    if (percentElement) {
+      percentElement.textContent = `${newLevel}%`
+    }
+
+    // Проверяем, достигнут ли 100% (и был ли предыдущий уровень не 100%)
+    if (newLevel === 100 && previousLevel !== 100) {
+      // Добавляем классы яркости
+      if (lightIcon) {
+        lightIcon.classList.add('bright')
+
+        // Запускаем анимацию увеличения иконки
+        animateLightIcon()
+      }
+      if (percentElement) {
+        percentElement.classList.add('bright')
+      }
+
+      // Дополнительная визуальная обратная связь
+      if (batteryContainer) {
+        batteryContainer.style.filter =
+          'drop-shadow(0 0 6px rgba(255,255,200,0.6))'
+      }
+
+      // Микро-анимация для всей батареи
+      if (batteryContainer) {
+        batteryContainer.style.transform = 'scale(1.02)'
+        setTimeout(() => {
+          if (batteryContainer) batteryContainer.style.transform = ''
+        }, 200)
+      }
+    } else if (newLevel !== 100) {
+      // Если не 100% — убираем яркость
+      if (lightIcon) {
+        lightIcon.classList.remove('bright')
+      }
+      if (percentElement) {
+        percentElement.classList.remove('bright')
+      }
+      if (batteryContainer) {
+        batteryContainer.style.filter = ''
+      }
+    }
+  }
+
+  // Функция увеличения заряда на шаг (по умолчанию 10%)
+  function increaseBattery(step = 10) {
+    let newLevel = currentBatteryLevel + step
+    if (newLevel > 100) newLevel = 100
+    updateBatteryLevel(newLevel)
+    return newLevel
+  }
+
+  // Функция сброса батареи (для тестирования)
+  function resetBattery() {
+    updateBatteryLevel(0)
+  }
+
+  // Устанавливаем правильные стили для иконки
+  if (lightIcon) {
+    lightIcon.style.position = 'absolute'
+    lightIcon.style.top = '50%'
+    lightIcon.style.left = '50%'
+    lightIcon.style.transform = 'translate(-50%, -50%)'
+    lightIcon.style.zIndex = '10'
+    lightIcon.style.pointerEvents = 'none'
+    lightIcon.style.transition =
+      'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease'
+  }
+
+  if (batteryCover) {
+    batteryCover.style.position = 'absolute'
+    batteryCover.style.bottom = '0'
+    batteryCover.style.left = '0'
+    batteryCover.style.zIndex = '1'
+  }
+
+  if (percentElement) {
+    percentElement.style.position = 'absolute'
+    percentElement.style.zIndex = '10'
+    percentElement.style.bottom = '1.5vw'
+  }
+
+  // Обработчик клика по батарее — увеличиваем заряд на 10%
+  if (batteryContainer) {
+    batteryContainer.addEventListener('click', (e) => {
+      e.stopPropagation()
+      increaseBattery(10)
+
+      // Дополнительный тактильный эффект (вибрация, если поддерживается)
+      if (navigator.vibrate) navigator.vibrate(50)
+
+      // Микро-анимация нажатия
+      batteryContainer.style.transform = 'scale(0.97)'
+      setTimeout(() => {
+        if (batteryContainer) batteryContainer.style.transform = ''
+      }, 120)
+    })
+  }
+
+  // Инициализация батареи
+  // Убеждаемся, что батарея стартует с 0%
+  updateBatteryLevel(0)
+
+  // Добавляем дополнительную интерактивность: при наведении лёгкое свечение
+  if (batteryContainer) {
+    batteryContainer.addEventListener('mouseenter', () => {
+      if (currentBatteryLevel < 100) {
+        batteryContainer.style.filter = 'brightness(1.05)'
+      }
+    })
+    batteryContainer.addEventListener('mouseleave', () => {
+      if (currentBatteryLevel < 100) {
+        batteryContainer.style.filter = ''
+      } else {
+        batteryContainer.style.filter =
+          'drop-shadow(0 0 6px rgba(255,255,200,0.6))'
+      }
+    })
+  }
+
+  // Экспортируем функции глобально (для возможности вызова из консоли или других модулей)
+  window.batteryAPI = {
+    increase: increaseBattery,
+    setLevel: updateBatteryLevel,
+    reset: resetBattery,
+    getLevel: () => currentBatteryLevel
   }
 }
