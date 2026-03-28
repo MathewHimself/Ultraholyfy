@@ -141,9 +141,110 @@ function initRouletteCasino() {
   const section8 = document.querySelector('.section8')
   const spinBtn2 = document.querySelector('.spinButton2')
   const whiteSquare = document.querySelector('.whiteSquare')
+  const casinoPopup = document.querySelector('.casinoPopup')
+  const popupIcon = document.querySelector('.popupIcon')
+  const headerElement = document.querySelector('.Header')
+  const quoteTextElement = document.querySelector('.quoteText')
+
+  // Проверяем наличие необходимых элементов
+  if (!section8 || !spinBtn2 || !whiteSquare) return
+
+  // Устанавливаем фиксированное положение рулетки (top: 36.2vw)
+  spinBtn2.style.top = '36.2vw'
+
+  // Скрываем попап в начале
+  if (casinoPopup) {
+    casinoPopup.style.display = 'none'
+  }
+
+  // Соответствие иконок и их контента
+  const iconData = {
+    'elevatoricon.svg': {
+      header: 'реверс',
+      quoteText: 'все негативные события становятся позитивными'
+    },
+    'plusicon.svg': {
+      header: 'плюс',
+      quoteText: 'в этот день произойдет на одно позитивное событие больше'
+    },
+    'circlearrowsicon.svg': {
+      header: 'цикл',
+      quoteText: 'вы проживете этот день еще раз'
+    },
+    'moonicon.svg': {
+      header: 'МУУН',
+      quoteText: 'вам приснится приятный сон'
+    },
+    'arrowsicon.svg': {
+      header: 'СКИП',
+      quoteText: 'дает право вырезать негативное событие из жизни'
+    }
+  }
+
+  // Функция определения выпавшей иконки под белым квадратом
+  function getIconUnderWhiteSquare() {
+    if (!whiteSquare || !spinBtn2) return null
+
+    const track = spinBtn2.querySelector('.roulette-track')
+    if (!track) return null
+
+    const whiteSquareRect = whiteSquare.getBoundingClientRect()
+    const spinBtnRect = spinBtn2.getBoundingClientRect()
+    const trackRect = track.getBoundingClientRect()
+
+    // Находим центр белого квадрата относительно трека
+    const centerX = whiteSquareRect.left + whiteSquareRect.width / 2
+    const centerY = whiteSquareRect.top + whiteSquareRect.height / 2
+
+    // Получаем все иконки в треке
+    const icons = track.querySelectorAll('img')
+
+    for (let icon of icons) {
+      const iconRect = icon.getBoundingClientRect()
+      // Проверяем, находится ли центр белого квадрата внутри иконки
+      if (
+        centerX >= iconRect.left &&
+        centerX <= iconRect.right &&
+        centerY >= iconRect.top &&
+        centerY <= iconRect.bottom
+      ) {
+        // Получаем имя файла иконки
+        const src = icon.getAttribute('src')
+        const iconName = src.split('/').pop()
+        return iconName
+      }
+    }
+    return null
+  }
+
+  // Функция обновления попапа
+  function updatePopup(iconName) {
+    if (!casinoPopup || !popupIcon || !headerElement || !quoteTextElement)
+      return
+
+    const data = iconData[iconName]
+    if (data) {
+      // Обновляем иконку в попапе
+      popupIcon.src = `Images/${iconName}`
+      popupIcon.style.display = 'block'
+
+      // Обновляем заголовок и текст
+      headerElement.textContent = data.header
+      quoteTextElement.textContent = data.quoteText
+
+      // Показываем попап
+      casinoPopup.style.display = 'flex'
+    }
+  }
+
+  // Функция скрытия попапа
+  function hidePopup() {
+    if (casinoPopup) {
+      casinoPopup.style.display = 'none'
+    }
+  }
 
   const icons = Array.from(spinBtn2.querySelectorAll('img'))
-
   const track = document.createElement('div')
   track.className = 'roulette-track'
   icons.forEach((icon) => track.appendChild(icon))
@@ -175,12 +276,19 @@ function initRouletteCasino() {
     const sqRect = whiteSquare.getBoundingClientRect()
     const sbRect = spinBtn2.getBoundingClientRect()
     const wCenter = sqRect.left - sbRect.left + sqRect.width / 2
-    // Ставим среднюю иконку под whiteSquare — иконки заполняют обе стороны
+    // Ставим среднюю иконку под whiteSquare
     const midIdx = Math.floor(icons.length / 2)
     setPos(wCenter - (midIdx * step + iconWidth / 2))
+
+    // Корректируем позицию track, чтобы он был на нужной высоте
+    track.style.top = '50%'
+    track.style.position = 'absolute'
   }
 
-  requestAnimationFrame(() => requestAnimationFrame(init))
+  // Ждем полной загрузки и рендеринга
+  setTimeout(() => {
+    init()
+  }, 100)
 
   const snap = () => {
     const step = getStep()
@@ -190,6 +298,12 @@ function initRouletteCasino() {
     const coordUnder = wCenter - posX
     const nearest = Math.round((coordUnder - step / 2) / step) * step + step / 2
     setPos(wCenter - nearest)
+
+    // Определяем выпавшую иконку и обновляем попап
+    const iconName = getIconUnderWhiteSquare()
+    if (iconName) {
+      updatePopup(iconName)
+    }
   }
 
   const animate = () => {
@@ -219,6 +333,223 @@ function initRouletteCasino() {
 
   section8.addEventListener('click', () => {
     if (isSpinning || stopping) return
+
+    // Скрываем попап перед началом вращения
+    hidePopup()
+
+    section8.classList.add('spinning')
+    isSpinning = true
+    speed = 0
+    requestAnimationFrame(animate)
+
+    const duration = 1800 + Math.random() * 1600
+    setTimeout(() => {
+      isSpinning = false
+      stopping = true
+    }, duration)
+  })
+}
+function initRouletteCasino() {
+  /* РУЛЕТКА КАЗИНО */
+  const section8 = document.querySelector('.section8')
+  const spinBtn2 = document.querySelector('.spinButton2')
+  const whiteSquare = document.querySelector('.whiteSquare')
+  const casinoPopup = document.querySelector('.casinoPopup')
+  const popupIcon = document.querySelector('.popupIcon')
+  const headerElement = document.querySelector('.Header')
+  const quoteTextElement = document.querySelector('.quoteText')
+
+  // Проверяем наличие необходимых элементов
+  if (!section8 || !spinBtn2 || !whiteSquare) return
+
+  // Устанавливаем фиксированное положение рулетки (top: 36.2vw)
+  spinBtn2.style.top = '36.2vw'
+
+  // Скрываем попап в начале
+  if (casinoPopup) {
+    casinoPopup.style.display = 'none'
+  }
+
+  // Соответствие иконок и их контента
+  const iconData = {
+    'elevatoricon.svg': {
+      header: 'реверс',
+      quoteText: 'все негативные события становятся позитивными'
+    },
+    'plusicon.svg': {
+      header: 'плюс',
+      quoteText: 'в этот день произойдет на одно позитивное событие больше'
+    },
+    'circlearrowsicon.svg': {
+      header: 'цикл',
+      quoteText: 'вы проживете этот день еще раз'
+    },
+    'moonicon.svg': {
+      header: 'МУУН',
+      quoteText: 'вам приснится приятный сон'
+    },
+    'arrowsicon.svg': {
+      header: 'СКИП',
+      quoteText: 'дает право вырезать негативное событие из жизни'
+    }
+  }
+
+  // Функция определения выпавшей иконки под белым квадратом
+  function getIconUnderWhiteSquare() {
+    if (!whiteSquare || !spinBtn2) return null
+
+    const track = spinBtn2.querySelector('.roulette-track')
+    if (!track) return null
+
+    const whiteSquareRect = whiteSquare.getBoundingClientRect()
+    const spinBtnRect = spinBtn2.getBoundingClientRect()
+    const trackRect = track.getBoundingClientRect()
+
+    // Находим центр белого квадрата относительно трека
+    const centerX = whiteSquareRect.left + whiteSquareRect.width / 2
+    const centerY = whiteSquareRect.top + whiteSquareRect.height / 2
+
+    // Получаем все иконки в треке
+    const icons = track.querySelectorAll('img')
+
+    for (let icon of icons) {
+      const iconRect = icon.getBoundingClientRect()
+      // Проверяем, находится ли центр белого квадрата внутри иконки
+      if (
+        centerX >= iconRect.left &&
+        centerX <= iconRect.right &&
+        centerY >= iconRect.top &&
+        centerY <= iconRect.bottom
+      ) {
+        // Получаем имя файла иконки
+        const src = icon.getAttribute('src')
+        const iconName = src.split('/').pop()
+        return iconName
+      }
+    }
+    return null
+  }
+
+  // Функция обновления попапа
+  function updatePopup(iconName) {
+    if (!casinoPopup || !popupIcon || !headerElement || !quoteTextElement)
+      return
+
+    const data = iconData[iconName]
+    if (data) {
+      // Обновляем иконку в попапе
+      popupIcon.src = `Images/${iconName}`
+      popupIcon.style.display = 'block'
+
+      // Обновляем заголовок и текст
+      headerElement.textContent = data.header
+      quoteTextElement.textContent = data.quoteText
+
+      // Показываем попап
+      casinoPopup.style.display = 'flex'
+    }
+  }
+
+  // Функция скрытия попапа
+  function hidePopup() {
+    if (casinoPopup) {
+      casinoPopup.style.display = 'none'
+    }
+  }
+
+  const icons = Array.from(spinBtn2.querySelectorAll('img'))
+  const track = document.createElement('div')
+  track.className = 'roulette-track'
+  icons.forEach((icon) => track.appendChild(icon))
+  spinBtn2.appendChild(track)
+
+  icons.forEach((icon) => track.appendChild(icon.cloneNode(true)))
+
+  let posX = 0
+  let speed = 0
+  let isSpinning = false
+  let stopping = false
+
+  const getStep = () => {
+    const icon = track.querySelector('img')
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0
+    return icon.offsetWidth + gap
+  }
+
+  // ВСЕГДА оба translate — X меняется, Y фиксирован -50%
+  const setPos = (x) => {
+    posX = x
+    track.style.transform = `translateX(${x}px) translateY(-50%)`
+  }
+
+  const init = () => {
+    const icon = track.querySelector('img')
+    const iconWidth = icon.offsetWidth
+    const step = getStep()
+    const sqRect = whiteSquare.getBoundingClientRect()
+    const sbRect = spinBtn2.getBoundingClientRect()
+    const wCenter = sqRect.left - sbRect.left + sqRect.width / 2
+    // Ставим среднюю иконку под whiteSquare
+    const midIdx = Math.floor(icons.length / 2)
+    setPos(wCenter - (midIdx * step + iconWidth / 2))
+
+    // Корректируем позицию track, чтобы он был на нужной высоте
+    track.style.top = '50%'
+    track.style.position = 'absolute'
+  }
+
+  // Ждем полной загрузки и рендеринга
+  setTimeout(() => {
+    init()
+  }, 100)
+
+  const snap = () => {
+    const step = getStep()
+    const sqRect = whiteSquare.getBoundingClientRect()
+    const sbRect = spinBtn2.getBoundingClientRect()
+    const wCenter = sqRect.left - sbRect.left + sqRect.width / 2
+    const coordUnder = wCenter - posX
+    const nearest = Math.round((coordUnder - step / 2) / step) * step + step / 2
+    setPos(wCenter - nearest)
+
+    // Определяем выпавшую иконку и обновляем попап
+    const iconName = getIconUnderWhiteSquare()
+    if (iconName) {
+      updatePopup(iconName)
+    }
+  }
+
+  const animate = () => {
+    const step = getStep()
+    const totalWidth = step * icons.length
+
+    if (stopping) {
+      speed *= 0.95
+      if (speed < 0.2) {
+        speed = 0
+        stopping = false
+        snap()
+        section8.classList.remove('spinning')
+        return
+      }
+    } else {
+      speed = Math.min(speed + 0.3, 4)
+    }
+
+    let next = posX - speed
+    if (next < -totalWidth) next += totalWidth
+    if (next > totalWidth) next -= totalWidth
+    setPos(next)
+
+    requestAnimationFrame(animate)
+  }
+
+  section8.addEventListener('click', () => {
+    if (isSpinning || stopping) return
+
+    // Скрываем попап перед началом вращения
+    hidePopup()
+
     section8.classList.add('spinning')
     isSpinning = true
     speed = 0

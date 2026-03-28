@@ -1184,7 +1184,7 @@ body::before {
   z-index: 1;
 }
 .spinButton2 {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1194,7 +1194,7 @@ body::before {
   border: 3px solid #fff;
   border-radius: 2.344vw;
   gap: 0.365vw;
-  top: 29.2vw;
+  top: 36.2vw;
 }
 .whiteSquare {
   position: absolute;
@@ -1208,7 +1208,7 @@ body::before {
   pointer-events: none;
 }
 .casinoPopup {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1218,7 +1218,7 @@ body::before {
   border: 3px solid #fff;
   border-radius: 2.3vw;
   backdrop-filter: blur(50px);
-  top: -7.5vw;
+  top: 6.8vw;
   z-index: 3;
 }
 .quote {
