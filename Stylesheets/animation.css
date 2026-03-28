@@ -1,0 +1,71 @@
+/* Траектория 1 - верхний правый угол, кругом (с учётом размера карточки) */
+@keyframes float1 {
+  0% {
+    left: 0%;
+    top: 0%;
+  }
+  25% {
+    left: calc(100% - 6.25vw);
+    top: 0%;
+  }
+  50% {
+    left: calc(100% - 6.25vw);
+    top: calc(100% - 6.25vw);
+  }
+  75% {
+    left: 0%;
+    top: calc(100% - 6.25vw);
+  }
+  100% {
+    left: 0%;
+    top: 0%;
+  }
+}
+
+/* Траектория 2 - диагональная */
+@keyframes float2 {
+  0% {
+    left: calc(100% - 6.25vw);
+    top: calc(100% - 6.25vw);
+  }
+  25% {
+    left: calc(50% - 3.125vw);
+    top: 0%;
+  }
+  50% {
+    left: 0%;
+    top: calc(50% - 3.125vw);
+  }
+  75% {
+    left: calc(60% - 3.125vw);
+    top: calc(100% - 6.25vw);
+  }
+  100% {
+    left: calc(100% - 6.25vw);
+    top: calc(100% - 6.25vw);
+  }
+}
+
+/* Траектория 3 - зигзаг */
+@keyframes float3 {
+  0% {
+    left: calc(50% - 3.125vw);
+    top: calc(50% - 3.125vw);
+  }
+  25% {
+    left: 0%;
+    top: 0%;
+  }
+  50% {
+    left: calc(100% - 6.25vw);
+    top: calc(50% - 3.125vw);
+  }
+  75% {
+    left: 0%;
+    top: calc(100% - 6.25vw);
+  }
+  100% {
+    left: calc(50% - 3.125vw);
+    top: calc(50% - 3.125vw);
+  }
+}

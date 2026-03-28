@@ -396,7 +396,7 @@ body::before {
   flex-direction: column;
   gap: 2.5vw;
 }
-/* .cardBlock {
+.cardBlock {
   position: relative;
   width: 44.115vw;
   height: 25.729vw;
@@ -404,39 +404,72 @@ body::before {
   justify-content: center;
   border: 3px solid #fff;
   border-radius: 3.1vw;
-} */
-/* ГЛАВНЫЙ КОНТЕЙНЕР — здесь летают карты и отскакивают от его границ */
-.cardBlock {
-  position: relative;
-  width: 44.115vw;
-  height: 25.729vw;
-  border: 3px solid #fff;
-  border-radius: 3.1vw;
-  background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) inset;
-}
-/* стиль каждой летающей карты */
-.flying-card {
-  position: absolute;
-  width: 10.104vw;
-  height: 15.781vw;
-  border-radius: 1.563vw;
-  background: linear-gradient(145deg, #f2622e, #f57b30);
-  box-shadow:
-    0 0.8vw 1.5vw rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  z-index: 5;
-  transition: none;
-  will-change: left, top;
 }
 
-.flying-card:hover {
+/* Карточки летают по блоку */
+.orangeCard1,
+.orangeCard2,
+.orangeCard3 {
+  position: absolute;
+  width: 6.25vw;
+  height: 6.25vw;
+  background-color: #f2622e;
+  border-radius: 1vw;
+  animation: float linear infinite;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: animation-play-state 0.3s ease;
+}
+
+.orangeCard1:hover,
+.orangeCard2:hover,
+.orangeCard3:hover {
+  animation-play-state: paused;
   filter: brightness(1.05);
   transform: scale(1.02);
   transition: transform 0.1s ease;
 }
+
+/* Разные пути анимации для каждой карточки */
+.orangeCard1 {
+  animation-name: float1;
+  animation-duration: 6s;
+}
+
+.orangeCard2 {
+  animation-name: float2;
+  animation-duration: 7s;
+}
+
+.orangeCard3 {
+  animation-name: float3;
+  animation-duration: 8s;
+}
+
+.cardModel {
+  position: relative;
+  width: 43.958vw;
+  height: 16.406vw;
+  display: flex;
+  border: 3px solid #fff;
+  border-radius: 3.1vw;
+}
+.addCrest1 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 10vw;
+}
+.addCrest2 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 20vw;
+}
+
 .orangeCard1 {
   position: absolute;
   width: 10.104vw;
@@ -464,29 +497,6 @@ body::before {
   margin-top: 8.6vw;
   margin-left: 12.4vw;
 }
-.cardModel {
-  position: relative;
-  width: 43.958vw;
-  height: 16.406vw;
-  display: flex;
-  border: 3px solid #fff;
-  border-radius: 3.1vw;
-}
-.addCrest1 {
-  position: absolute;
-  width: 2.9vw;
-  height: 3.1vw;
-  padding-top: 6vw;
-  left: 10vw;
-}
-.addCrest2 {
-  position: absolute;
-  width: 2.9vw;
-  height: 3.1vw;
-  padding-top: 6vw;
-  left: 20vw;
-}
-
 .model {
   position: absolute;
   width: 18.906vw;
