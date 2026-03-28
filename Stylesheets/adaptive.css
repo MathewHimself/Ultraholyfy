@@ -505,6 +505,9 @@
     gap: 0.365vw;
     top: 60.2vw;
   }
+  element.style {
+    top: 36.2vw;
+  }
   .icon {
     position: relative;
     width: 12.5vw;
