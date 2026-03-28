@@ -5,6 +5,8 @@ initPixelGrid()
 initBatteryModule()
 initMoneyRainModule()
 initRainIconSlider()
+initTypeTextModule()
+initMemoGame()
 function initRainIconSlider() {
   /* RAIN ICONSLIDER */
   const slider = document.querySelector('.rainSlider')
@@ -837,4 +839,234 @@ function initMoneyRainModule() {
     start: startRain,
     getLevel: () => currentRainLevel
   }
+}
+function initTypeTextModule() {
+  // ========== TYPETEXT MODULE ==========
+  const typingElement = document.querySelector('.typing')
+  const typeTextContainer = document.querySelector('.typeText')
+
+  if (!typingElement) return
+
+  let originalText = typingElement.textContent || 'Напечатать текст'
+  let isTypingMode = true
+  let randomTextInterval = null
+
+  // Словарь случайных символов
+  const randomChars = {
+    lowercase: 'abcdefghijklmnopqrstuvwxyz',
+    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    numbers: '0123456789',
+    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?/~'
+  }
+
+  // Функция получения случайного символа
+  function getRandomChar() {
+    const allChars =
+      randomChars.lowercase +
+      randomChars.uppercase +
+      randomChars.numbers +
+      randomChars.symbols
+    return allChars[Math.floor(Math.random() * allChars.length)]
+  }
+
+  // Функция генерации случайной строки заданной длины
+  function generateRandomString(length) {
+    let result = ''
+    for (let i = 0; i < length; i++) {
+      result += getRandomChar()
+    }
+    return result
+  }
+
+  // Функция добавления случайных ошибок в текст
+  function addRandomErrors(text, errorCount) {
+    if (errorCount <= 0) return text
+
+    let textArray = text.split('')
+    const positions = []
+
+    // Выбираем случайные позиции для ошибок
+    for (let i = 0; i < errorCount && i < textArray.length; i++) {
+      let pos
+      do {
+        pos = Math.floor(Math.random() * textArray.length)
+      } while (positions.includes(pos))
+      positions.push(pos)
+    }
+
+    // Заменяем символы на случайные
+    positions.forEach((pos) => {
+      textArray[pos] = getRandomChar()
+    })
+
+    return textArray.join('')
+  }
+
+  // Функция показа случайных символов с ошибками (сразу)
+  function startRandomSymbols() {
+    if (randomTextInterval) clearInterval(randomTextInterval)
+
+    let iterations = 0
+    const maxIterations = 15 // Количество смен текста перед возвратом
+
+    randomTextInterval = setInterval(() => {
+      if (!typingElement) return
+
+      iterations++
+
+      // Генерируем случайную строку длиной от 10 до 30 символов
+      const randomLength = 10 + Math.floor(Math.random() * 20)
+      let randomText = generateRandomString(randomLength)
+
+      // Добавляем ошибки в случайный текст
+      const errorCount = Math.floor(Math.random() * 5) + 1
+      randomText = addRandomErrors(randomText, errorCount)
+
+      // Обновляем текст
+      typingElement.textContent = randomText
+
+      // Добавляем эффект "глюка"
+      typingElement.style.transform =
+        'skewX(' + (Math.random() * 4 - 2) + 'deg)'
+      setTimeout(() => {
+        if (typingElement) typingElement.style.transform = ''
+      }, 100)
+
+      // Если достигли максимума итераций, возвращаем исходный текст
+      if (iterations >= maxIterations) {
+        clearInterval(randomTextInterval)
+        randomTextInterval = null
+
+        // Возвращаем исходный текст
+        setTimeout(() => {
+          typingElement.textContent = originalText
+          isTypingMode = true
+        }, 300)
+      }
+    }, 400) // Меняем текст каждые 400ms
+  }
+
+  // Функция начала процесса (сразу с глюков)
+  function startProcess() {
+    if (!isTypingMode) return
+
+    isTypingMode = false
+
+    // Сразу запускаем генерацию случайных символов с ошибками
+    startRandomSymbols()
+  }
+
+  // Функция сброса (возврат к исходному тексту)
+  function resetToOriginal() {
+    if (randomTextInterval) {
+      clearInterval(randomTextInterval)
+      randomTextInterval = null
+    }
+
+    typingElement.textContent = originalText
+    isTypingMode = true
+  }
+
+  // Добавляем обработчик клика для активации
+  if (typeTextContainer) {
+    typeTextContainer.style.cursor = 'pointer'
+
+    typeTextContainer.addEventListener('click', (e) => {
+      e.stopPropagation()
+      startProcess()
+    })
+
+    // Эффект при наведении
+    typeTextContainer.addEventListener('mouseenter', () => {
+      if (isTypingMode) {
+        typeTextContainer.style.transform = 'scale(1.02)'
+      }
+    })
+
+    typeTextContainer.addEventListener('mouseleave', () => {
+      typeTextContainer.style.transform = ''
+    })
+  }
+
+  // Добавляем возможность сброса по двойному клику
+  if (typingElement) {
+    typingElement.addEventListener('dblclick', (e) => {
+      e.stopPropagation()
+      resetToOriginal()
+    })
+  }
+
+  // Устанавливаем стили
+  if (typeTextContainer) {
+    typeTextContainer.style.backgroundColor = '#fff'
+    typeTextContainer.style.transition = 'transform 0.2s ease'
+  }
+
+  if (typingElement) {
+    typingElement.style.color = '#000'
+  }
+
+  // Экспортируем API
+  window.typeTextAPI = {
+    start: startProcess,
+    reset: resetToOriginal,
+    setText: (text) => {
+      originalText = text
+      if (isTypingMode) {
+        typingElement.textContent = text
+      }
+    }
+  }
+}
+function initMemoGame() {
+  const cards = document.querySelectorAll('.memo .card')
+  let flipped = []
+  let locked = false
+
+  // Оборачиваем карточки, если ещё не обёрнуты
+  cards.forEach((card) => {
+    const img = card.querySelector('img')
+    if (!card.querySelector('.card-inner')) {
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front"></div>
+          <div class="card-back">${img ? img.outerHTML : ''}</div>
+        </div>`
+    }
+
+    card.addEventListener('click', () => {
+      if (
+        locked ||
+        card.classList.contains('active') ||
+        card.classList.contains('flipped')
+      )
+        return
+
+      card.classList.add('flipped')
+      flipped.push(card)
+
+      if (flipped.length === 2) {
+        locked = true
+        const [a, b] = flipped
+
+        if (a.dataset.icon === b.dataset.icon) {
+          // Совпадение — помечаем активными
+          a.classList.add('active')
+          b.classList.add('active')
+          a.classList.remove('flipped')
+          b.classList.remove('flipped')
+          flipped = []
+          locked = false
+        } else {
+          // Не совпало — переворачиваем обратно
+          setTimeout(() => {
+            a.classList.remove('flipped')
+            b.classList.remove('flipped')
+            flipped = []
+            locked = false
+          }, 900)
+        }
+      }
+    })
+  })
 }
