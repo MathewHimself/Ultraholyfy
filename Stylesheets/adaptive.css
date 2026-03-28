@@ -134,14 +134,14 @@
     border: 1px solid #fff;
   }
 
-  /* Контейнер баров: расширяем до ~88% ширины блока */
+  /* Контейнер баров*/
   .inlineContainer {
     width: 82vw;
     height: 36vw;
     gap: 1.8vw;
   }
 
-  /* Все карточки-лейблы (infUp) — шире и пропорционально выше */
+  /* Все карточки*/
   .infUp,
   .infUp2,
   .infUp3,
@@ -171,38 +171,14 @@
     font-size: 1.8vw;
   }
 
-  /* Оранжевые столбики: шире + высоты пересчитаны (×1.29 от desktop) */
-  .infBottom1 {
-    width: 14.5vw;
-    height: 17vw;
-    border-radius: 2.3vw 2.3vw 0 0;
-  }
-  .infBottom2 {
-    width: 14.5vw;
-    height: 15.7vw;
-    border-radius: 2.3vw 2.3vw 0 0;
-  }
-  .infBottom3 {
-    width: 14.5vw;
-    height: 18.1vw;
-    border-radius: 2.3vw 2.3vw 0 0;
-  }
-  .infBottom4 {
-    width: 14.5vw;
-    height: 14.5vw;
-    border-radius: 2.3vw 2.3vw 0 0;
-  }
-  .infBottom5 {
-    width: 14.5vw;
-    height: 17vw;
-    border-radius: 2.3vw 2.3vw 0 0;
-  }
-
   /* Кресты секции 2: только крайние видны — левый и правый */
   .krest5,
   .krest6,
   .krest7,
-  .krest8 {
+  .krest8,
+  .name3,
+  .addNumber,
+  .addNumber2 {
     display: none;
   }
 

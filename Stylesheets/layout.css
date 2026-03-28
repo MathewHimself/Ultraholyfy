@@ -175,164 +175,22 @@ body::before {
   height: 27.917vw;
   align-items: flex-end;
 }
-.container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2.448vw;
-}
-.infUp {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.885vw;
-  width: 11.198vw;
-  height: 6.667vw;
-  border-radius: 2vw;
-  background: #383636;
-}
-.infHeader {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 2.083vw;
-  font-style: normal;
-  font-weight: 400;
-}
-.infText {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 17.068px;
-  font-style: normal;
-  font-weight: 300;
-}
-.infBottom1 {
-  display: flex;
-  width: 11.406vw;
-  height: 13.125vw;
-  border-radius: 2vw 2vw 0 0;
-  background: linear-gradient(to bottom, #f2622e, #f57b30);
-}
-.container2 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2.448vw;
-}
-.infUp2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.885vw;
-  width: 11.198vw;
-  height: 6.667vw;
-  border-radius: 2vw;
-  background: #383636;
-}
-.infHeader2 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 2.083vw;
-  font-style: normal;
-  font-weight: 400;
-}
-.infText2 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 17.068px;
-  font-style: normal;
-  font-weight: 300;
-}
-.infBottom2 {
-  display: flex;
-  width: 11.406vw;
-  height: 12.188vw;
-  border-radius: 2vw 2vw 0 0;
-  background: linear-gradient(to bottom, #f2622e, #f57b30);
-}
-.container3 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2.448vw;
-}
-.infUp3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.885vw;
-  width: 11.198vw;
-  height: 6.667vw;
-  border-radius: 2vw;
-  background: #383636;
-}
-.infHeader3 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 2.083vw;
-  font-style: normal;
-  font-weight: 400;
-}
-.infText3 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 17.068px;
-  font-style: normal;
-  font-weight: 300;
-}
-.infBottom3 {
-  display: flex;
-  width: 11.406vw;
-  height: 14.063vw;
-  border-radius: 2vw 2vw 0 0;
-  background: linear-gradient(to bottom, #f2622e, #f57b30);
-}
-.container4 {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2.448vw;
-}
-.infUp4 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 0.885vw;
-  width: 11.198vw;
-  height: 6.667vw;
-  border-radius: 2vw;
-  background: #383636;
-}
-.infHeader4 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 2.083vw;
-  font-style: normal;
-  font-weight: 400;
-}
-.infText4 {
-  color: #fff;
-  font-family: Helvetica;
-  font-size: 17.068px;
-  font-style: normal;
-  font-weight: 300;
-}
-.infBottom4 {
-  display: flex;
-  width: 11.406vw;
-  height: 11.25vw;
-  border-radius: 2vw 2vw 0 0;
-  background: linear-gradient(to bottom, #f2622e, #f57b30);
-}
+.container,
+.container2,
+.container3,
+.container4,
 .container5 {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.448vw;
+  align-items: center;
 }
+
+.infUp,
+.infUp2,
+.infUp3,
+.infUp4,
 .infUp5 {
   display: flex;
   align-items: center;
@@ -343,28 +201,129 @@ body::before {
   height: 6.667vw;
   border-radius: 2vw;
   background: #383636;
+  transition: all 0.2s ease;
 }
+
+.infHeader,
+.infHeader2,
+.infHeader3,
+.infHeader4,
 .infHeader5 {
   color: #fff;
   font-family: Helvetica;
   font-size: 2.083vw;
-  font-style: normal;
   font-weight: 400;
 }
+
+.infText,
+.infText2,
+.infText3,
+.infText4,
 .infText5 {
   color: #fff;
   font-family: Helvetica;
-  font-size: 17.068px;
-  font-style: normal;
+  font-size: 1.1vw;
   font-weight: 300;
+  text-transform: uppercase;
 }
+
+/* динамические столбцы */
+.infBottom1,
+.infBottom2,
+.infBottom3,
+.infBottom4,
 .infBottom5 {
   display: flex;
   width: 11.406vw;
-  height: 13.125vw;
   border-radius: 2vw 2vw 0 0;
   background: linear-gradient(to bottom, #f2622e, #f57b30);
+  transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  height: 144px; /* временное значение, будет переопределено JS */
 }
+/* ДИНАМИЧЕСКИЕ СТОЛБЦЫ — высота в vw (рассчитывается JS) */
+.infBottom1,
+.infBottom2,
+.infBottom3,
+.infBottom4,
+.infBottom5 {
+  display: flex;
+  width: 11.406vw;
+  border-radius: 2vw 2vw 0 0;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  height: 0vw; /* начальное значение, будет переопределено */
+  min-height: 0.5vw; /* минимальная видимость */
+}
+
+/* кнопки уровней */
+.subscribitionLine {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2vw;
+  padding-left: 13.594vw;
+  gap: 1.5vw;
+  flex-wrap: wrap;
+}
+
+/* ДИНАМИЧЕСКИЕ СТОЛБЦЫ — высота в vw (рассчитывается JS) */
+.infBottom1,
+.infBottom2,
+.infBottom3,
+.infBottom4,
+.infBottom5 {
+  display: flex;
+  width: 11.406vw;
+  border-radius: 2vw 2vw 0 0;
+  background: linear-gradient(to bottom, #f2622e, #f57b30);
+  transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  height: 0vw; /* начальное значение, будет переопределено */
+  min-height: 0.5vw; /* минимальная видимость */
+}
+
+/* кнопки уровней */
+.subscribitionLine {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2vw;
+  padding-left: 13.594vw;
+  gap: 1.5vw;
+  flex-wrap: wrap;
+}
+
+.button {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 11.354vw;
+  height: 5.417vw;
+  display: flex;
+  cursor: pointer;
+  border: 3px solid #fff;
+  border-radius: 2vw;
+  background-color: transparent;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+/* активная кнопка — белый фон */
+.button.active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.button.active .levelIcon {
+  filter: invert(1);
+  mix-blend-mode: normal;
+}
+
+.levelIcon {
+  position: relative;
+  width: 3.698vw;
+  pointer-events: none;
+  transition: filter 0.2s;
+}
+
 .krest5 {
   position: absolute;
   width: 2.9vw;
@@ -414,7 +373,7 @@ body::before {
 .levelIcon {
   position: relative;
   width: 3.698vw;
-  height: 3.698vw;
+  mix-blend-mode: difference;
 }
 
 .section3 {
@@ -437,7 +396,7 @@ body::before {
   flex-direction: column;
   gap: 2.5vw;
 }
-.cardBlock {
+/* .cardBlock {
   position: relative;
   width: 44.115vw;
   height: 25.729vw;
@@ -445,30 +404,17 @@ body::before {
   justify-content: center;
   border: 3px solid #fff;
   border-radius: 3.1vw;
-}
-.cardModel {
+} */
+.cardBlock {
   position: relative;
-  width: 43.958vw;
-  height: 16.406vw;
-  display: flex;
+  width: 44.115vw;
+  height: 25.729vw;
   border: 3px solid #fff;
   border-radius: 3.1vw;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden; /* карты не выходят за границы визуально, отскок от этих границ */
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) inset;
 }
-.addCrest1 {
-  position: absolute;
-  width: 2.9vw;
-  height: 3.1vw;
-  padding-top: 6vw;
-  left: 10vw;
-}
-.addCrest2 {
-  position: absolute;
-  width: 2.9vw;
-  height: 3.1vw;
-  padding-top: 6vw;
-  left: 20vw;
-}
-
 .orangeCard1 {
   position: absolute;
   width: 10.104vw;
@@ -496,6 +442,53 @@ body::before {
   margin-top: 8.6vw;
   margin-left: 12.4vw;
 }
+/* общий стиль для каждой карты-звена змейки */
+.snake-card {
+  position: absolute;
+  width: 10.104vw;
+  height: 15.781vw;
+  border-radius: 1.563vw;
+  background: linear-gradient(145deg, #f2622e, #f57b30);
+  box-shadow:
+    0 0.8vw 1.5vw rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition:
+    left 0.08s linear,
+    top 0.08s linear;
+  will-change: left, top;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* лёгкий эффект при наведении */
+.snake-card:hover {
+  filter: brightness(1.05);
+  transform: scale(1.01);
+  transition: transform 0.1s ease;
+}
+.cardModel {
+  position: relative;
+  width: 43.958vw;
+  height: 16.406vw;
+  display: flex;
+  border: 3px solid #fff;
+  border-radius: 3.1vw;
+}
+.addCrest1 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 10vw;
+}
+.addCrest2 {
+  position: absolute;
+  width: 2.9vw;
+  height: 3.1vw;
+  padding-top: 6vw;
+  left: 20vw;
+}
+
 .model {
   position: absolute;
   width: 18.906vw;
@@ -563,15 +556,14 @@ body::before {
 .name3 {
   position: absolute;
   color: #fff;
-  transform: rotate(-90deg);
+  translate: 83.5vw 22vw;
+  rotate: -90deg;
   transform-origin: center center;
   font-family: Helvetica;
   font-size: 2.344vw;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
-  top: 9.4vw;
-  padding-left: 66vw;
 }
 .name4 {
   position: absolute;
@@ -628,7 +620,7 @@ body::before {
   font-size: 1.172vw;
   position: absolute;
   padding-top: 48.4vw;
-  padding-left: 19.2vw;
+  padding-left: 13.2vw;
 }
 .number10 {
   display: inline-block;
@@ -658,6 +650,33 @@ body::before {
   padding-left: 34.4vw;
   transform: rotate(90deg);
 }
+.addNumber {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform-origin: bottom left;
+  font-family: Helvetica;
+  font-size: 1.172vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  translate: 91.4vw 10vw;
+  rotate: -90deg;
+}
+.addNumber2 {
+  display: inline-block;
+  position: absolute;
+  color: #fff;
+  transform-origin: bottom left;
+  font-family: Helvetica;
+  font-size: 1.172vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  translate: 91.4vw 39vw;
+  rotate: -90deg;
+}
+
 .computer2 {
   width: 55.417vw;
   height: 31.198vw;

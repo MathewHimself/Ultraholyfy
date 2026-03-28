@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UltraHolyfy</title>
+    <link rel="shortcut icon" href="Images/faviicon.svg" type="image/x-icon" />
     <link rel="stylesheet" href="Stylesheets/style.css" />
     <script defer src="Javascripts/scripts.js"></script>
   </head>
@@ -31,40 +32,45 @@
     <section class="section2">
       <div class="oraculBlock">
         <div class="inlineContainer">
-          <div class="container">
+          <!-- Счастье -->
+          <div class="container" data-metric="happiness">
             <div class="infUp">
-              <p class="infHeader">70%</p>
+              <p class="infHeader" id="happinessValue">70%</p>
               <p class="infText">СЧАСТЬЕ</p>
             </div>
-            <div class="infBottom1"></div>
+            <div class="infBottom1" id="barHappiness"></div>
           </div>
-          <div class="container2">
+          <!-- Доход -->
+          <div class="container2" data-metric="income">
             <div class="infUp2">
-              <p class="infHeader2">65%</p>
+              <p class="infHeader2" id="incomeValue">65%</p>
               <p class="infText2">доход</p>
             </div>
-            <div class="infBottom2"></div>
+            <div class="infBottom2" id="barIncome"></div>
           </div>
-          <div class="container3">
+          <!-- Здоровье -->
+          <div class="container3" data-metric="health">
             <div class="infUp3">
-              <p class="infHeader3">75%</p>
+              <p class="infHeader3" id="healthValue">75%</p>
               <p class="infText3">здоровье</p>
             </div>
-            <div class="infBottom3"></div>
+            <div class="infBottom3" id="barHealth"></div>
           </div>
-          <div class="container4">
+          <!-- Удача -->
+          <div class="container4" data-metric="luck">
             <div class="infUp4">
-              <p class="infHeader4">60%</p>
+              <p class="infHeader4" id="luckValue">60%</p>
               <p class="infText4">удача</p>
             </div>
-            <div class="infBottom4"></div>
+            <div class="infBottom4" id="barLuck"></div>
           </div>
-          <div class="container5">
+          <!-- Благополучие -->
+          <div class="container5" data-metric="wellbeing">
             <div class="infUp5">
-              <p class="infHeader5">70%</p>
+              <p class="infHeader5" id="wellbeingValue">70%</p>
               <p class="infText5">благополучие</p>
             </div>
-            <div class="infBottom5"></div>
+            <div class="infBottom5" id="barWellbeing"></div>
           </div>
         </div>
       </div>
@@ -73,20 +79,20 @@
       <img class="krest7" src="Images/krest.jpg" alt="" />
       <img class="krest8" src="Images/krest.jpg" alt="" />
       <div class="subscribitionLine">
-        <div class="button">
-          <img class="levelIcon" src="Images/level1.svg" alt="" />
+        <div class="button s1" data-level="1">
+          <img class="levelIcon" src="Images/level1.svg" alt="Уровень 1" />
         </div>
-        <div class="button">
-          <img class="levelIcon" src="Images/level2.svg" alt="" />
+        <div class="button s2" data-level="2">
+          <img class="levelIcon" src="Images/level2.svg" alt="Уровень 2" />
         </div>
-        <div class="button">
-          <img class="levelIcon" src="Images/level3.svg" alt="" />
+        <div class="button s3" data-level="3">
+          <img class="levelIcon" src="Images/level3.svg" alt="Уровень 3" />
         </div>
-        <div class="button">
-          <img class="levelIcon" src="Images/level4.svg" alt="" />
+        <div class="button s4" data-level="4">
+          <img class="levelIcon" src="Images/level4.svg" alt="Уровень 4" />
         </div>
-        <div class="button">
-          <img class="levelIcon" src="Images/level5.svg" alt="" />
+        <div class="button s5" data-level="5">
+          <img class="levelIcon" src="Images/level5.svg" alt="Уровень 5" />
         </div>
       </div>
     </section>
@@ -96,9 +102,9 @@
       </div>
       <div class="rightBlock">
         <div class="cardBlock">
-          <div class="orangeCard1"></div>
-          <div class="orangeCard2"></div>
-          <div class="orangeCard3"></div>
+          <div class="orangeCard1 snake-card"></div>
+          <div class="orangeCard2 snake-card"></div>
+          <div class="orangeCard3 snake-card"></div>
         </div>
         <div class="cardModel">
           <img class="addCrest1" src="Images/krest.jpg" alt="" srcset="" />
@@ -114,7 +120,7 @@
       <img class="krest12" src="Images/krest.jpg" alt="" />
       <p class="name1">model A_0.31</p>
       <p class="name2">Frqncy_01671gH3</p>
-      <!-- <p class="name3">Aa_01z[314]</p> -->
+      <p class="name3">Aa_01z[314]</p>
       <p class="name4">CarmaComputer</p>
       <p class="number5">MOde: enabled</p>
       <p class="number6">Aa</p>
@@ -123,6 +129,8 @@
       <p class="number9">2384782347</p>
       <p class="number10">782347</p>
       <p class="number11">2347</p>
+      <p class="addNumber">782347</p>
+      <p class="addNumber2">2347</p>
       <img class="computer2" src="Images/computer2.png" alt="" />
     </section>
     <section class="section5">
