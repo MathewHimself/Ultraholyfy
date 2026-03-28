@@ -1070,3 +1070,198 @@ function initMemoGame() {
     })
   })
 }
+;(function () {
+  const labirinth = document.querySelector('.labirinth')
+  const player = document.querySelector('.player')
+  const walls = document.querySelector('.walls')
+  const winletter = document.querySelector('.winletter')
+
+  if (!labirinth || !player) return
+
+  /* ── В начале скрываем winletter, показываем player и walls ── */
+  if (winletter) {
+    winletter.style.display = 'none'
+  }
+  if (walls) {
+    walls.style.display = 'block'
+  }
+  if (player) {
+    player.style.display = 'block'
+  }
+
+  /* ── Константы ─────────────────────────────────────────── */
+  const SVG_W = 651
+  const SVG_H = 653
+  const STROKE_W = 13
+  const WALLS_VW = 33.333
+  const LAB_VW = 44.479
+  const OFFSET_VW = (LAB_VW - WALLS_VW) / 2 // 5.573vw
+  const PLAYER_VW = 2.656
+  const PLAYER_SVG = (PLAYER_VW / WALLS_VW) * SVG_W // ~53 svg-единицы
+  const SPEED = 3.5
+
+  /* ── Координаты финиша (в vw) ──────────────────────────── */
+  const FINISH_LEFT_VW = 28.6846
+  const FINISH_TOP_VW = 5.57043
+
+  /* ── Стартовая позиция игрока (в vw) ───────────────────── */
+  const START_LEFT_VW = 5.62807
+  const START_TOP_VW = 12.5075
+
+  // Коэффициенты для пересчета SVG координат в vw
+  const scaleX = WALLS_VW / SVG_W
+  const scaleY = WALLS_VW / SVG_H
+
+  // Переводим стартовые vw координаты в SVG координаты
+  const START_PX = (START_LEFT_VW - OFFSET_VW) / scaleX
+  const START_PY = (START_TOP_VW - OFFSET_VW) / scaleY
+
+  /* ── Скрытый canvas для коллизии ───────────────────────── */
+  const PATH =
+    'M326.75 111.5H14C9.85786 111.5 6.5 108.142 6.5 104V14' +
+    'C6.5 9.85787 9.85786 6.5 14 6.5H425C429.142 6.5 432.5 9.85786 432.5 14V216.5' +
+    'M539.5 432.5V227C539.5 222.858 536.142 219.5 532 219.5H228' +
+    'C223.858 219.5 220.5 222.858 220.5 227V425C220.5 429.142 223.858 432.5 228 432.5H327.834' +
+    'M327.5 326.5H424C428.142 326.5 431.5 329.858 431.5 334V534.5' +
+    'M538.667 114.209V16C538.667 11.8579 542.025 8.5 546.167 8.5H637' +
+    'C641.142 8.5 644.5 11.8579 644.5 16V639C644.5 643.142 641.142 646.5 637 646.5H14' +
+    'C9.85785 646.5 6.5 643.142 6.5 639V227.417C6.5 223.275 9.85786 219.917 14 219.917H116.836' +
+    'M114.5 323.5V640.5' +
+    'M539.5 537.5H114.5'
+
+  const col = document.createElement('canvas')
+  col.width = SVG_W
+  col.height = SVG_H
+  const ctx = col.getContext('2d')
+  ctx.strokeStyle = '#000'
+  ctx.lineWidth = STROKE_W
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+  ctx.stroke(new Path2D(PATH))
+
+  const pixels = ctx.getImageData(0, 0, SVG_W, SVG_H).data
+
+  /* ── Проверка пикселя ──────────────────────────────────── */
+  function isWall(x, y) {
+    x = Math.round(x)
+    y = Math.round(y)
+    if (x < 0 || y < 0 || x >= SVG_W || y >= SVG_H) return true
+    return pixels[(y * SVG_W + x) * 4 + 3] > 80
+  }
+
+  function collidesWithWall(sx, sy) {
+    const s = PLAYER_SVG
+    const step = s / 5
+    for (let x = sx; x <= sx + s; x += step)
+      for (let y = sy; y <= sy + s; y += step) if (isWall(x, y)) return true
+    return false
+  }
+
+  /* ── Проверка достижения финиша ────────────────────────── */
+  function checkFinish(px, py) {
+    // Получаем текущие координаты игрока в vw
+    const playerLeft = px * scaleX + OFFSET_VW
+    const playerTop = py * scaleY + OFFSET_VW
+
+    // Вычисляем центр игрока
+    const playerCenterX = playerLeft + PLAYER_VW / 2
+    const playerCenterY = playerTop + PLAYER_VW / 2
+
+    // Вычисляем расстояние до финиша
+    const distance = Math.sqrt(
+      Math.pow(playerCenterX - FINISH_LEFT_VW, 2) +
+        Math.pow(playerCenterY - FINISH_TOP_VW, 2)
+    )
+
+    // Если расстояние меньше половины размера игрока, считаем что достиг финиша
+    return distance < PLAYER_VW
+  }
+
+  /* ── Показ победного экрана ────────────────────────────── */
+  let gameActive = true
+
+  function showWin() {
+    gameActive = false
+
+    // Скрываем стены и игрока
+    if (walls) walls.style.display = 'none'
+    if (player) player.style.display = 'none'
+
+    // Показываем winletter
+    if (winletter) {
+      winletter.style.display = 'block'
+      winletter.style.position = 'absolute'
+      winletter.style.top = '50%'
+      winletter.style.left = '50%'
+      winletter.style.transform = 'translate(-50%, -50%)'
+      winletter.style.zIndex = '20'
+    }
+  }
+
+  /* ── Позиция игрока (SVG-пространство) ─────────────────── */
+  let px = START_PX
+  let py = START_PY
+
+  /* ── Клавиши ───────────────────────────────────────────── */
+  const keys = {}
+
+  function handleKeyDown(e) {
+    if (!gameActive) return
+    const k = e.key.toLowerCase()
+    if (['w', 'a', 's', 'd'].includes(k)) {
+      e.preventDefault()
+      keys[k] = true
+    }
+  }
+
+  function handleKeyUp(e) {
+    const k = e.key.toLowerCase()
+    if (['w', 'a', 's', 'd'].includes(k)) {
+      keys[k] = false
+    }
+  }
+
+  window.addEventListener('keydown', handleKeyDown)
+  window.addEventListener('keyup', handleKeyUp)
+
+  /* ── Рендер ────────────────────────────────────────────── */
+  function render() {
+    player.style.left = px * scaleX + OFFSET_VW + 'vw'
+    player.style.top = py * scaleY + OFFSET_VW + 'vw'
+  }
+
+  /* ── Игровой цикл ──────────────────────────────────────── */
+  let animationId = null
+
+  function loop() {
+    if (!gameActive) return
+
+    let dx = 0,
+      dy = 0
+    if (keys['w']) dy = -SPEED
+    if (keys['s']) dy = SPEED
+    if (keys['a']) dx = -SPEED
+    if (keys['d']) dx = SPEED
+
+    if (dx && dy) {
+      dx *= 0.7071
+      dy *= 0.7071
+    }
+
+    if (dx && !collidesWithWall(px + dx, py)) px += dx
+    if (dy && !collidesWithWall(px, py + dy)) py += dy
+
+    render()
+
+    // Проверка достижения финиша
+    if (checkFinish(px, py)) {
+      showWin()
+      return
+    }
+
+    animationId = requestAnimationFrame(loop)
+  }
+
+  render()
+  animationId = requestAnimationFrame(loop)
+})()

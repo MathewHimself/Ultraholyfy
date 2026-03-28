@@ -376,6 +376,10 @@
     height: 185.547vw;
     top: 25vw;
   }
+  .winletter {
+    width: 82.422vw;
+    height: 9.635vw;
+  }
   .zodiacSign {
     width: 20vw;
     height: 20vw;
@@ -386,6 +390,7 @@
     border-radius: 5.236vw;
     order: -1;
   }
+
   .walls {
     position: relative;
     width: 67.188vw;

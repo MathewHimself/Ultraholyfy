@@ -1043,20 +1043,26 @@ body::before {
   background-color: #fff;
   border-radius: 2.813vw;
 }
+
 .walls {
   position: relative;
   width: 33.333vw;
   height: 33.333vw;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .player {
-  background-color: black;
   position: absolute;
   width: 2.656vw;
   height: 2.656vw;
   border-radius: 0.781vw;
-  top: 13vw;
-  left: 4vw;
+  background-color: black;
+  z-index: 2;
+}
+.winletter {
+  width: 40.208vw;
+  height: 6.146vw;
 }
 
 .section7 {
