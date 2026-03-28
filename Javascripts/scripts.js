@@ -500,198 +500,6 @@ function initBatteryModule() {
     getLevel: () => currentBatteryLevel
   }
 }
-function initMoneyRainModule() {
-  // ========== MONEY RAIN MODULE ==========
-  // Конфигурация количества падающих долларов для каждого уровня
-  const rainConfig = {
-    0: { count: 5, interval: 800, name: 'мало' }, // circle1
-    1: { count: 12, interval: 450, name: 'средне' }, // circle2
-    2: { count: 25, interval: 250, name: 'много' } // circle3
-  }
-
-  let currentRainLevel = 0 // 0 - мало, 1 - средне, 2 - много
-  let rainInterval = null
-  let isRaining = false
-
-  // DOM элементы
-  const fallingContainer = document.getElementById('fallingContainer')
-  const rainIcons = document.querySelectorAll('.rainIcon')
-  const rainButton = document.querySelector('.rainButton')
-  const originalDollar = document.querySelector('.karmaDollar')
-  const moneyRainContainer = document.querySelector('.moneyRain')
-
-  // Функция создания падающего доллара
-  function createFallingDollar() {
-    if (!fallingContainer || !originalDollar) return
-
-    const dollar = originalDollar.cloneNode(true)
-    dollar.classList.add('fallingDollar')
-    dollar.style.display = 'block'
-
-    // Случайная позиция по горизонтали (0% до 100% ширины контейнера)
-    const randomLeft = Math.random() * (moneyRainContainer.clientWidth - 50)
-    dollar.style.left = `${randomLeft}px`
-
-    // Случайная длительность анимации (от 1.5 до 3.5 секунд)
-    const randomDuration = 1.5 + Math.random() * 2.5
-    dollar.style.animationDuration = `${randomDuration}s`
-
-    // Случайная задержка старта
-    const randomDelay = Math.random() * 0.5
-    dollar.style.animationDelay = `${randomDelay}s`
-
-    // Случайный размер (немного варьируем)
-    const randomScale = 0.8 + Math.random() * 0.7
-    dollar.style.width = `${4.896 * randomScale}vw`
-
-    // Добавляем элемент в контейнер
-    fallingContainer.appendChild(dollar)
-
-    // Удаляем элемент после окончания анимации
-    dollar.addEventListener('animationend', () => {
-      if (dollar && dollar.remove) {
-        dollar.remove()
-      }
-    })
-  }
-
-  // Функция запуска дождя с заданным количеством
-  function startRain(level) {
-    // Останавливаем текущий дождь
-    if (rainInterval) {
-      clearInterval(rainInterval)
-      rainInterval = null
-    }
-
-    const config = rainConfig[level]
-    if (!config) return
-
-    // Создаем указанное количество долларов сразу (некоторые падают сразу)
-    for (let i = 0; i < config.count; i++) {
-      setTimeout(
-        () => {
-          createFallingDollar()
-        },
-        i * (config.interval / config.count)
-      )
-    }
-
-    // Запускаем интервал для постоянного падения
-    rainInterval = setInterval(() => {
-      createFallingDollar()
-    }, config.interval)
-
-    isRaining = true
-  }
-
-  // Функция остановки дождя
-  function stopRain() {
-    if (rainInterval) {
-      clearInterval(rainInterval)
-      rainInterval = null
-    }
-    isRaining = false
-  }
-
-  // Функция изменения уровня дождя
-  function setRainLevel(level) {
-    if (level === currentRainLevel) return
-
-    currentRainLevel = level
-
-    // Очищаем все падающие элементы
-    if (fallingContainer) {
-      const fallingElements =
-        fallingContainer.querySelectorAll('.fallingDollar')
-      fallingElements.forEach((el) => el.remove())
-    }
-
-    // Запускаем дождь с новым уровнем
-    startRain(currentRainLevel)
-  }
-
-  // Функция обновления позиции кнопки слайдера
-  function updateSliderButtonPosition(level) {
-    if (!rainButton) return
-
-    // Удаляем старые классы позиции
-    rainButton.classList.remove('pos-0', 'pos-1', 'pos-2')
-
-    // Добавляем новый класс в зависимости от уровня
-    switch (level) {
-      case 0:
-        rainButton.classList.add('pos-0')
-        break
-      case 1:
-        rainButton.classList.add('pos-1')
-        break
-      case 2:
-        rainButton.classList.add('pos-2')
-        break
-    }
-  }
-
-  // Обработка кликов по иконкам слайдера
-  if (rainIcons.length > 0) {
-    rainIcons.forEach((icon, index) => {
-      icon.addEventListener('click', (e) => {
-        e.stopPropagation()
-
-        // Меняем уровень дождя (0, 1, 2)
-        const newLevel = index
-        if (newLevel !== currentRainLevel) {
-          setRainLevel(newLevel)
-          updateSliderButtonPosition(newLevel)
-
-          // Визуальная обратная связь
-          icon.style.transform = 'scale(0.9)'
-          setTimeout(() => {
-            icon.style.transform = ''
-          }, 150)
-
-          // Вибрация при смене режима
-          if (navigator.vibrate) navigator.vibrate(50)
-        }
-      })
-    })
-  }
-
-  // Проверяем наличие контейнера для падающих элементов
-  if (!fallingContainer) {
-    // Если контейнера нет, создаем его
-    const moneyRain = document.querySelector('.moneyRain')
-    if (moneyRain) {
-      const newContainer = document.createElement('div')
-      newContainer.id = 'fallingContainer'
-      newContainer.className = 'fallingContainer'
-      moneyRain.appendChild(newContainer)
-    }
-  }
-
-  // Устанавливаем начальную позицию кнопки
-  updateSliderButtonPosition(0)
-
-  // Запускаем дождь с уровнем "мало"
-  startRain(0)
-
-  // Добавляем эффект при наведении на контейнер
-  if (moneyRainContainer) {
-    moneyRainContainer.addEventListener('mouseenter', () => {
-      moneyRainContainer.style.filter = 'brightness(1.02)'
-    })
-    moneyRainContainer.addEventListener('mouseleave', () => {
-      moneyRainContainer.style.filter = ''
-    })
-  }
-
-  // Экспортируем функции для возможного использования из других модулей
-  window.moneyRainAPI = {
-    setLevel: setRainLevel,
-    stop: stopRain,
-    start: startRain,
-    getLevel: () => currentRainLevel
-  }
-}
 function initRainIconSlider() {
   /* RAIN ICONSLIDER */
   const slider = document.querySelector('.rainSlider')
@@ -756,4 +564,277 @@ function initRainIconSlider() {
       moveTo(items[activeIndex], activeIndex)
     }
   })
+}
+function initMoneyRainModule() {
+  // ========== MONEY RAIN MODULE ==========
+  // Конфигурация количества падающих долларов для каждого уровня
+  const rainConfig = {
+    0: {
+      count: 8, // количество одновременно падающих
+      interval: 600, // интервал создания новых (мс)
+      speed: 'slow', // медленное падение
+      durationMin: 2.5,
+      durationMax: 4.0
+    },
+    1: {
+      count: 15,
+      interval: 350,
+      speed: 'medium',
+      durationMin: 1.8,
+      durationMax: 3.0
+    },
+    2: {
+      count: 30,
+      interval: 180,
+      speed: 'fast',
+      durationMin: 1.2,
+      durationMax: 2.2
+    }
+  }
+
+  let currentRainLevel = 0
+  let rainInterval = null
+  let activeFallingElements = 0
+  let maxActiveElements = 50
+
+  // DOM элементы
+  let fallingContainer = null
+  let rainIcons = null
+  let rainButton = null
+  let originalDollar = null
+
+  // Функция создания падающего доллара
+  function createFallingDollar() {
+    if (!fallingContainer || !originalDollar) return null
+
+    // Ограничиваем количество элементов на экране для производительности
+    if (activeFallingElements > maxActiveElements) return null
+
+    const dollar = originalDollar.cloneNode(true)
+    dollar.classList.add('fallingDollar')
+    dollar.style.display = 'block'
+    dollar.style.position = 'absolute'
+
+    // Случайная позиция по горизонтали (от 0 до ширины контейнера)
+    const containerWidth = fallingContainer.parentElement.clientWidth
+    const dollarWidth = parseFloat(getComputedStyle(dollar).width) || 50
+    const randomLeft = Math.random() * (containerWidth - dollarWidth)
+    dollar.style.left = `${randomLeft}px`
+
+    // Случайная задержка старта
+    const randomDelay = Math.random() * 0.5
+    dollar.style.animationDelay = `${randomDelay}s`
+
+    // Длительность анимации зависит от выбранного уровня
+    const config = rainConfig[currentRainLevel]
+    const duration =
+      config.durationMin +
+      Math.random() * (config.durationMax - config.durationMin)
+    dollar.style.animationDuration = `${duration}s`
+
+    // Случайный размер (варьируем для разнообразия)
+    const randomScale = 0.7 + Math.random() * 0.8
+    dollar.style.width = `${4.896 * randomScale}vw`
+    dollar.style.height = 'auto'
+
+    // Добавляем случайный поворот в начале
+    const randomRotate = Math.random() * 360
+    dollar.style.transform = `rotate(${randomRotate}deg)`
+
+    // Добавляем элемент в контейнер
+    fallingContainer.appendChild(dollar)
+    activeFallingElements++
+
+    // Удаляем элемент после окончания анимации
+    dollar.addEventListener('animationend', () => {
+      if (dollar && dollar.remove) {
+        dollar.remove()
+        activeFallingElements--
+      }
+    })
+
+    return dollar
+  }
+
+  // Функция создания нескольких долларов одновременно
+  function createBatchOfDollars(count) {
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        createFallingDollar()
+      }, i * 50)
+    }
+  }
+
+  // Функция запуска дождя
+  function startRain(level) {
+    // Останавливаем текущий дождь
+    if (rainInterval) {
+      clearInterval(rainInterval)
+      rainInterval = null
+    }
+
+    // Очищаем все существующие падающие элементы
+    if (fallingContainer) {
+      const existingDollars =
+        fallingContainer.querySelectorAll('.fallingDollar')
+      existingDollars.forEach((dollar) => dollar.remove())
+      activeFallingElements = 0
+    }
+
+    const config = rainConfig[level]
+    if (!config) return
+
+    // Создаем начальную партию долларов
+    createBatchOfDollars(config.count)
+
+    // Запускаем интервал для постоянного создания новых долларов
+    rainInterval = setInterval(() => {
+      if (fallingContainer && activeFallingElements < maxActiveElements) {
+        createFallingDollar()
+      }
+    }, config.interval)
+
+    isRaining = true
+  }
+
+  // Функция остановки дождя
+  function stopRain() {
+    if (rainInterval) {
+      clearInterval(rainInterval)
+      rainInterval = null
+    }
+    if (fallingContainer) {
+      const dollars = fallingContainer.querySelectorAll('.fallingDollar')
+      dollars.forEach((d) => d.remove())
+      activeFallingElements = 0
+    }
+    isRaining = false
+  }
+
+  // Функция изменения уровня дождя
+  function setRainLevel(level) {
+    if (level === currentRainLevel) return
+
+    currentRainLevel = level
+
+    // Запускаем дождь с новым уровнем
+    startRain(currentRainLevel)
+
+    // Визуальная обратная связь - подсветка контейнера
+    const moneyRainContainer = document.querySelector('.moneyRain')
+    if (moneyRainContainer) {
+      moneyRainContainer.style.transition = 'box-shadow 0.2s ease'
+      moneyRainContainer.style.boxShadow = '0 0 15px rgba(242, 98, 46, 0.5)'
+      setTimeout(() => {
+        moneyRainContainer.style.boxShadow = ''
+      }, 300)
+    }
+  }
+
+  // Функция обновления позиции кнопки слайдера
+  function updateSliderButtonPosition(level) {
+    if (!rainButton) return
+
+    // Удаляем старые классы позиции
+    rainButton.classList.remove('pos-0', 'pos-1', 'pos-2')
+
+    // Добавляем новый класс в зависимости от уровня
+    switch (level) {
+      case 0:
+        rainButton.classList.add('pos-0')
+        break
+      case 1:
+        rainButton.classList.add('pos-1')
+        break
+      case 2:
+        rainButton.classList.add('pos-2')
+        break
+    }
+  }
+
+  // Инициализация
+  function init() {
+    // Находим все необходимые элементы
+    fallingContainer = document.getElementById('fallingContainer')
+    rainIcons = document.querySelectorAll('.rainIcon')
+    rainButton = document.querySelector('.rainButton')
+    originalDollar = document.querySelector('.karmaDollar')
+
+    // Проверяем наличие контейнера для падающих элементов
+    if (!fallingContainer) {
+      const moneyRain = document.querySelector('.moneyRain')
+      if (moneyRain) {
+        const newContainer = document.createElement('div')
+        newContainer.id = 'fallingContainer'
+        newContainer.className = 'fallingContainer'
+        moneyRain.appendChild(newContainer)
+        fallingContainer = newContainer
+      }
+    }
+
+    // Добавляем CSS для fallingContainer
+    if (fallingContainer) {
+      fallingContainer.style.position = 'absolute'
+      fallingContainer.style.top = '0'
+      fallingContainer.style.left = '0'
+      fallingContainer.style.width = '100%'
+      fallingContainer.style.height = '100%'
+      fallingContainer.style.overflow = 'hidden'
+      fallingContainer.style.pointerEvents = 'none'
+      fallingContainer.style.zIndex = '10'
+    }
+
+    // Обработка кликов по иконкам слайдера
+    if (rainIcons && rainIcons.length > 0) {
+      rainIcons.forEach((icon, index) => {
+        icon.addEventListener('click', (e) => {
+          e.stopPropagation()
+
+          // Меняем уровень дождя (0, 1, 2)
+          const newLevel = index
+          if (newLevel !== currentRainLevel) {
+            setRainLevel(newLevel)
+            updateSliderButtonPosition(newLevel)
+
+            // Визуальная обратная связь
+            icon.style.transform = 'scale(0.9)'
+            setTimeout(() => {
+              icon.style.transform = ''
+            }, 150)
+
+            // Вибрация при смене режима
+            if (navigator.vibrate) navigator.vibrate(50)
+          }
+        })
+      })
+    }
+
+    // Устанавливаем начальную позицию кнопки
+    updateSliderButtonPosition(0)
+
+    // Запускаем дождь с уровнем "мало"
+    startRain(0)
+
+    // Добавляем эффект при наведении на контейнер
+    const moneyRainContainer = document.querySelector('.moneyRain')
+    if (moneyRainContainer) {
+      moneyRainContainer.addEventListener('mouseenter', () => {
+        moneyRainContainer.style.filter = 'brightness(1.02)'
+      })
+      moneyRainContainer.addEventListener('mouseleave', () => {
+        moneyRainContainer.style.filter = ''
+      })
+    }
+  }
+
+  // Запускаем инициализацию
+  init()
+
+  // Экспортируем функции для возможного использования из других модулей
+  window.moneyRainAPI = {
+    setLevel: setRainLevel,
+    stop: stopRain,
+    start: startRain,
+    getLevel: () => currentRainLevel
+  }
 }
