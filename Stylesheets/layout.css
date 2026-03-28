@@ -405,6 +405,7 @@ body::before {
   border: 3px solid #fff;
   border-radius: 3.1vw;
 } */
+/* ГЛАВНЫЙ КОНТЕЙНЕР — здесь летают карты и отскакивают от его границ */
 .cardBlock {
   position: relative;
   width: 44.115vw;
@@ -412,8 +413,29 @@ body::before {
   border: 3px solid #fff;
   border-radius: 3.1vw;
   background: rgba(0, 0, 0, 0.3);
-  overflow: hidden; /* карты не выходят за границы визуально, отскок от этих границ */
+  overflow: hidden;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2) inset;
+}
+/* стиль каждой летающей карты */
+.flying-card {
+  position: absolute;
+  width: 10.104vw;
+  height: 15.781vw;
+  border-radius: 1.563vw;
+  background: linear-gradient(145deg, #f2622e, #f57b30);
+  box-shadow:
+    0 0.8vw 1.5vw rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  z-index: 5;
+  transition: none;
+  will-change: left, top;
+}
+
+.flying-card:hover {
+  filter: brightness(1.05);
+  transform: scale(1.02);
+  transition: transform 0.1s ease;
 }
 .orangeCard1 {
   position: absolute;
@@ -441,30 +463,6 @@ body::before {
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   margin-top: 8.6vw;
   margin-left: 12.4vw;
-}
-/* общий стиль для каждой карты-звена змейки */
-.snake-card {
-  position: absolute;
-  width: 10.104vw;
-  height: 15.781vw;
-  border-radius: 1.563vw;
-  background: linear-gradient(145deg, #f2622e, #f57b30);
-  box-shadow:
-    0 0.8vw 1.5vw rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition:
-    left 0.08s linear,
-    top 0.08s linear;
-  will-change: left, top;
-  cursor: pointer;
-  z-index: 5;
-}
-
-/* лёгкий эффект при наведении */
-.snake-card:hover {
-  filter: brightness(1.05);
-  transform: scale(1.01);
-  transition: transform 0.1s ease;
 }
 .cardModel {
   position: relative;
