@@ -147,9 +147,12 @@ body::before {
   width: 1.719vw;
   height: 1.719vw;
 }
-.computer {
-  width: 28.33vw;
-  height: 32.083vw;
+
+#container3D {
+  position: absolute;
+  background-color: red;
+  width: 75vw;
+  height: 38vw;
 }
 .section2 {
   width: 91.198vw;
