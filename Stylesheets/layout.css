@@ -7,20 +7,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../Images/background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0.3;
-  z-index: 0;
-} */
 body::before {
   content: '';
   position: absolute;
@@ -28,7 +14,6 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-image: url('../Images/mobile.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.3;
@@ -46,25 +31,22 @@ body::before {
   padding-left: 8vw;
   z-index: 5;
 }
-/*  Компьютер (computer) - плавное движение вверх-вниз */
+
 .floating-computer {
   animation: floatUpDown 3s ease-in-out infinite;
   will-change: transform;
 }
 
-/*  Компьютер 2 (computer2) - плавное движение вверх-вниз */
 .floating-computer2 {
   animation: floatUpDown 3s ease-in-out infinite;
   will-change: transform;
 }
 
-/*. Камера 1 (camera1) - движение ВВЕРХ */
 .floating-camera-up {
   animation: floatUp 4s ease-in-out infinite;
   will-change: transform;
 }
 
-/*  Камера 2 (camera2) - движение ВНИЗ */
 .floating-camera-down {
   animation: floatDown 4s ease-in-out infinite;
   will-change: transform;
@@ -255,7 +237,6 @@ body::before {
   text-transform: uppercase;
 }
 
-/* динамические столбцы */
 .infBottom1,
 .infBottom2,
 .infBottom3,
@@ -266,9 +247,9 @@ body::before {
   border-radius: 2vw 2vw 0 0;
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  height: 144px; /* временное значение, будет переопределено JS */
+  height: 144px;
 }
-/* ДИНАМИЧЕСКИЕ СТОЛБЦЫ — высота в vw (рассчитывается JS) */
+
 .infBottom1,
 .infBottom2,
 .infBottom3,
@@ -279,8 +260,8 @@ body::before {
   border-radius: 2vw 2vw 0 0;
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  height: 0vw; /* начальное значение, будет переопределено */
-  min-height: 0.5vw; /* минимальная видимость */
+  height: 0vw;
+  min-height: 0.5vw;
 }
 
 /* кнопки уровней */
@@ -293,7 +274,6 @@ body::before {
   flex-wrap: wrap;
 }
 
-/* ДИНАМИЧЕСКИЕ СТОЛБЦЫ — высота в vw (рассчитывается JS) */
 .infBottom1,
 .infBottom2,
 .infBottom3,
@@ -304,8 +284,8 @@ body::before {
   border-radius: 2vw 2vw 0 0;
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   transition: height 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-  height: 0vw; /* начальное значение, будет переопределено */
-  min-height: 0.5vw; /* минимальная видимость */
+  height: 0vw;
+  min-height: 0.5vw;
 }
 
 /* кнопки уровней */
@@ -334,7 +314,6 @@ body::before {
     transform 0.1s ease;
 }
 
-/* активная кнопка — белый фон */
 .button.active {
   background-color: #ffffff;
   border-color: #ffffff;
@@ -464,7 +443,6 @@ body::before {
   overflow: hidden;
 }
 
-/* Карточки летают по блоку */
 .orangeCard1,
 .orangeCard2,
 .orangeCard3 {
@@ -488,7 +466,6 @@ body::before {
   transition: transform 0.1s ease;
 }
 
-/* Разные пути анимации для каждой карточки */
 .orangeCard1 {
   animation-name: float1;
   animation-duration: 6s;
@@ -773,18 +750,6 @@ body::before {
 .battery:active {
   transform: scale(0.98);
 }
-/* .batteryBorder {
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  overflow: hidden;
-  width: 18.698vw;
-  height: 23.854vw;
-  border-radius: 2.813vw;
-  border: 3px solid #fff;
-} */
 .battery {
   position: relative;
   display: flex;
@@ -828,7 +793,6 @@ body::before {
   border-radius: 0 0 2.5vw 2.5vw;
 }
 
-/* Процент тоже должен быть выше */
 .percent {
   position: absolute;
   font-family: 'Helvetica';
@@ -938,7 +902,6 @@ body::before {
   pointer-events: none;
   cursor: pointer;
 }
-/* Позиции для rainButton */
 .rainButton.pos-0 {
   left: -0.1vw;
 }
@@ -983,7 +946,6 @@ body::before {
   position: relative;
   display: flex;
   flex-direction: row;
-  /* gap: 0vw; */
   width: 90.625vw;
   height: 44.531vw;
   padding-top: 1.7vw;
@@ -995,7 +957,7 @@ body::before {
   gap: 1.7vw;
   z-index: 10;
 }
-/* Карточки мемо */
+
 .memo .card {
   cursor: pointer;
   perspective: 600px;
@@ -1009,13 +971,11 @@ body::before {
   transition: transform 0.5s ease;
 }
 
-/* Перевёрнутая карточка */
 .memo .card.flipped .card-inner,
 .memo .card.active .card-inner {
   transform: rotateY(180deg);
 }
 
-/* Лицевая сторона (рубашка) */
 .memo .card .card-front,
 .memo .card .card-back {
   position: absolute;
@@ -1031,7 +991,6 @@ body::before {
   transform: rotateY(180deg);
 }
 
-/* Угаданные карточки */
 .memo .card.active .card-back {
   opacity: 1;
 }
@@ -1039,13 +998,12 @@ body::before {
   width: 10vw;
   height: 10vw;
 }
-/* строка */
+
 .row {
   display: flex;
   gap: 1.7vw;
 }
 
-/* карточка */
 .card {
   width: 9.7vw;
   height: 9.7vw;
@@ -1056,7 +1014,6 @@ body::before {
   justify-content: center;
 }
 
-/* активные (оранжевые) */
 .card.active {
   background: linear-gradient(to bottom, #f2622e, #f57b30);
   border: none;
@@ -1298,7 +1255,6 @@ body::before {
   z-index: 2;
 }
 
-/* Кликабельность section8 */
 .section8 {
   cursor: pointer;
   user-select: none;
@@ -1310,14 +1266,11 @@ body::before {
   cursor: wait;
 }
 
-/* spinButton2: скрываем иконки за краями и убираем flex-gap
-   (gap теперь живёт только в roulette-track) */
 .spinButton2 {
   overflow: hidden;
-  gap: 0; /* gap переехал в трек */
+  gap: 0;
 }
 
-/* whiteSquare: по центру, z-index НИЖЕ трека */
 .whiteSquare {
   position: absolute;
   left: 50%;
@@ -1327,24 +1280,22 @@ body::before {
   height: 5.99vw;
   background-color: #fff;
   border-radius: 1.146vw;
-  z-index: 1; /* ниже трека */
+  z-index: 1;
   pointer-events: none;
 }
 
-/* Трек: абсолютно позиционирован, вертикально центрирован через top+translateY */
 .roulette-track {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translateY(-50%); /* JS перезапишет на translateX + translateY */
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   gap: 0.365vw;
-  z-index: 2; /* выше whiteSquare */
+  z-index: 2;
   will-change: transform;
 }
 
-/* Иконки в треке */
 .roulette-track img {
   flex-shrink: 0;
   width: 5.99vw;
@@ -1352,9 +1303,6 @@ body::before {
   display: block;
 }
 
-/* Эффект чёрного цвета при проходе над белым квадратом.
-   mix-blend-mode: difference делает это автоматически:
-   белая иконка над белым фоном = чёрная, без JS */
 .roulette-track {
   mix-blend-mode: difference;
 }

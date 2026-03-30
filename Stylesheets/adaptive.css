@@ -103,7 +103,6 @@
     gap: 1.8vw;
   }
 
-  /* Все карточки*/
   .infUp,
   .infUp2,
   .infUp3,
@@ -115,7 +114,6 @@
     gap: 0.8vw;
   }
 
-  /* Заголовки % */
   .infHeader,
   .infHeader2,
   .infHeader3,
@@ -124,16 +122,14 @@
     font-size: 2.6vw;
   }
 
-  /* Подписи под % — с px на vw */
   .infText,
   .infText2,
   .infText3,
   .infText4,
   .infText5 {
-    font-size: 1.8vw;
+    font-size: 1.5vw;
   }
 
-  /* Кресты секции 2: только крайние видны — левый и правый */
   .krest5,
   .krest6,
   .krest7,
@@ -144,7 +140,6 @@
     display: none;
   }
 
-  /* Ряд кнопок подписок: кнопки шире, центрированы */
   .subscribitionLine {
     padding-top: 2.2vw;
     padding-left: 4vw;
@@ -193,33 +188,10 @@
     height: 38vw;
     border-radius: 4vw;
   }
-
-  /* .orangeCard1,
-  .orangeCard2,
-  .orangeCard3 {
-    width: 22vw;
-    height: 34vw;
-    border-radius: 3vw;
-  }
-
-  .orangeCard1 {
-    margin-top: 2vw;
-    margin-left: -1.5vw;
-  }
-  .orangeCard2 {
-    margin-top: 7vw;
-    margin-left: 8vw;
-  }
-  .orangeCard3 {
-    margin-top: 12vw;
-    margin-left: 18vw;
-  } */
-
-  /* Уменьшенные оранжевые карточки на мобильных */
   .orangeCard1,
   .orangeCard2,
   .orangeCard3 {
-    width: 19vw; /* пропорционально меньше */
+    width: 19vw;
     height: 29vw;
     border-radius: 3vw;
   }
