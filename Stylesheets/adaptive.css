@@ -241,6 +241,7 @@
     padding-top: 3vw;
     gap: 1.51vw;
     top: 25vw;
+    padding-bottom: 1vw;
   }
   .battery {
     width: 53.714vw;
@@ -251,7 +252,7 @@
     width: 32.167vw;
     height: 42.8vw;
     border-radius: 5.236vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
   }
   .lightIcon {
     width: 10.602vw;
@@ -266,13 +267,13 @@
     width: 49.215vw;
     height: 29.319vw;
     border-radius: 5.236vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
   }
   .rainSlider {
     gap: 0.365vw;
     width: 19.661vw;
     height: 7.552vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
     border-radius: 1.953vw;
     margin-top: 1.8vw;
     margin-left: 13.7vw;
@@ -342,7 +343,7 @@
     width: 21vw;
     height: 21vw;
     border-radius: 5.729vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
   }
   .section7 {
     width: 91.406vw;
@@ -432,7 +433,7 @@
     width: 67.448vw;
     height: 15.234vw;
     top: 15vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
     border-radius: 4.948vw;
     gap: 0.365vw;
     top: 60.2vw;
@@ -459,7 +460,7 @@
   .casinoPopup {
     width: 67.057vw;
     height: 44.401vw;
-    border: 3px solid #fff;
+    border: 1px solid #fff;
     border-radius: 4.557vw;
     top: -2.5vw;
   }
