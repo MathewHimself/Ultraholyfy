@@ -9,7 +9,6 @@ initTypeTextModule()
 initMemoGame()
 initLabyrinth()
 function initRainIconSlider() {
-  /* RAIN ICONSLIDER */
   const slider = document.querySelector('.rainSlider')
   const btn = slider.querySelector('.rainButton')
   const items = slider.querySelectorAll('.rainIcon')
@@ -27,7 +26,6 @@ function initRainIconSlider() {
   })
 }
 function initSubscriptionLevels() {
-  /* УРОВНИ ПОДПИСКИ */
   const levelData = {
     1: { happiness: 40, income: 35, health: 45, luck: 30, wellbeing: 40 },
     2: { happiness: 55, income: 50, health: 60, luck: 45, wellbeing: 55 },
@@ -138,7 +136,6 @@ function initSubscriptionLevels() {
   }, 100)
 }
 function initRouletteCasino() {
-  /* РУЛЕТКА КАЗИНО */
   const section8 = document.querySelector('.section8')
   const spinBtn2 = document.querySelector('.spinButton2')
   const whiteSquare = document.querySelector('.whiteSquare')
@@ -147,21 +144,17 @@ function initRouletteCasino() {
   const headerElement = document.querySelector('.Header')
   const quoteTextElement = document.querySelector('.quoteText')
 
-  // Проверяем наличие необходимых элементов
   if (!section8 || !spinBtn2 || !whiteSquare) return
 
-  // Функция для определения адаптивных значений
   function setAdaptivePositions() {
     const isMobile = window.innerWidth <= 767
 
     if (isMobile) {
-      // Мобильная версия
       spinBtn2.style.top = '78.2vw'
       if (casinoPopup) {
         casinoPopup.style.top = '31.5vw'
       }
     } else {
-      // Десктопная версия
       spinBtn2.style.top = '36.2vw'
       if (casinoPopup) {
         casinoPopup.style.top = ''
@@ -169,20 +162,16 @@ function initRouletteCasino() {
     }
   }
 
-  // Устанавливаем начальные позиции
   setAdaptivePositions()
 
-  // Скрываем попап в начале
   if (casinoPopup) {
     casinoPopup.style.display = 'none'
   }
 
-  // Следим за изменением размера окна
   window.addEventListener('resize', () => {
     setAdaptivePositions()
   })
 
-  // Соответствие иконок и их контента
   const iconData = {
     'elevatoricon.svg': {
       header: 'реверс',
@@ -206,7 +195,6 @@ function initRouletteCasino() {
     }
   }
 
-  // Функция определения выпавшей иконки под белым квадратом
   function getIconUnderWhiteSquare() {
     if (!whiteSquare || !spinBtn2) return null
 
@@ -217,23 +205,20 @@ function initRouletteCasino() {
     const spinBtnRect = spinBtn2.getBoundingClientRect()
     const trackRect = track.getBoundingClientRect()
 
-    // поиск центра белого квадрата относительно трека
     const centerX = whiteSquareRect.left + whiteSquareRect.width / 2
     const centerY = whiteSquareRect.top + whiteSquareRect.height / 2
 
-    // все иконки в треке
     const icons = track.querySelectorAll('img')
 
     for (let icon of icons) {
       const iconRect = icon.getBoundingClientRect()
-      // Проверяем, находится ли центр белого квадрата внутри иконки
+
       if (
         centerX >= iconRect.left &&
         centerX <= iconRect.right &&
         centerY >= iconRect.top &&
         centerY <= iconRect.bottom
       ) {
-        // Получаем имя файла иконки
         const src = icon.getAttribute('src')
         const iconName = src.split('/').pop()
         return iconName
@@ -242,27 +227,22 @@ function initRouletteCasino() {
     return null
   }
 
-  // Функция обновления попапа
   function updatePopup(iconName) {
     if (!casinoPopup || !popupIcon || !headerElement || !quoteTextElement)
       return
 
     const data = iconData[iconName]
     if (data) {
-      // Обновляем иконку в попапе
       popupIcon.src = `Images/${iconName}`
       popupIcon.style.display = 'block'
 
-      // Обновляем заголовок и текст
       headerElement.textContent = data.header
       quoteTextElement.textContent = data.quoteText
 
-      // Показываем попап
       casinoPopup.style.display = 'flex'
     }
   }
 
-  // Функция скрытия попапа
   function hidePopup() {
     if (casinoPopup) {
       casinoPopup.style.display = 'none'
@@ -299,16 +279,14 @@ function initRouletteCasino() {
     const sqRect = whiteSquare.getBoundingClientRect()
     const sbRect = spinBtn2.getBoundingClientRect()
     const wCenter = sqRect.left - sbRect.left + sqRect.width / 2
-    // Ставим среднюю иконку под whiteSquare
+
     const midIdx = Math.floor(icons.length / 2)
     setPos(wCenter - (midIdx * step + iconWidth / 2))
 
-    // Корректируем позицию track, чтобы он был на нужной высоте
     track.style.top = '50%'
     track.style.position = 'absolute'
   }
 
-  // Ждем полной загрузки и рендеринга
   setTimeout(() => {
     init()
   }, 100)
@@ -322,7 +300,6 @@ function initRouletteCasino() {
     const nearest = Math.round((coordUnder - step / 2) / step) * step + step / 2
     setPos(wCenter - nearest)
 
-    // Определяем выпавшую иконку и обновляем попап
     const iconName = getIconUnderWhiteSquare()
     if (iconName) {
       updatePopup(iconName)
@@ -357,7 +334,6 @@ function initRouletteCasino() {
   section8.addEventListener('click', () => {
     if (isSpinning || stopping) return
 
-    // Скрываем попап перед началом вращения
     hidePopup()
 
     section8.classList.add('spinning')
@@ -473,58 +449,45 @@ function initPixelGrid() {
   }
 }
 function initBatteryModule() {
-  //элементы батареи
   const batteryContainer = document.querySelector('.battery')
   const batteryCover = document.getElementById('batteryCover')
   const percentElement = document.getElementById('percentValue')
   const lightIcon = document.getElementById('lightIcon')
 
-  // Текущий уровень заряда (0-100)
   let currentBatteryLevel = 0
 
-  // Функция анимации увеличения иконки
   function animateLightIcon() {
     if (!lightIcon) return
 
-    // Сохранение исходного размера
     const originalWidth = lightIcon.offsetWidth
     const originalHeight = lightIcon.offsetHeight
 
-    // Увеличиваем иконку
     lightIcon.style.transform = 'translate(-50%, -50%) scale(1.3)'
     lightIcon.style.transition =
       'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)'
 
-    // Возвращаем к исходному размеру через 0.2 секунды
     setTimeout(() => {
       lightIcon.style.transform = 'translate(-50%, -50%) scale(1)'
     }, 200)
   }
 
-  // Функция обновления батареи
   function updateBatteryLevel(percent) {
-    // Ограничиваем значение от 0 до 100
     let newLevel = Math.min(100, Math.max(0, percent))
     let previousLevel = currentBatteryLevel
     currentBatteryLevel = newLevel
 
-    // обновление высоты заливки (batteryCover)
     if (batteryCover) {
       batteryCover.style.height = `${newLevel}%`
     }
 
-    // Обновляем текст процентов
     if (percentElement) {
       percentElement.textContent = `${newLevel}%`
     }
 
-    // Проверяем, достигнут ли 100%
     if (newLevel === 100 && previousLevel !== 100) {
-      // Добавляем классы яркости
       if (lightIcon) {
         lightIcon.classList.add('bright')
 
-        // запуск анимации увеличения иконки
         animateLightIcon()
       }
       if (percentElement) {
@@ -535,7 +498,6 @@ function initBatteryModule() {
           'drop-shadow(0 0 6px rgba(255,255,200,0.6))'
       }
 
-      // Микро-анимация для всей батареи
       if (batteryContainer) {
         batteryContainer.style.transform = 'scale(1.02)'
         setTimeout(() => {
@@ -543,7 +505,6 @@ function initBatteryModule() {
         }, 200)
       }
     } else if (newLevel !== 100) {
-      // Если не 100% — убираем яркость
       if (lightIcon) {
         lightIcon.classList.remove('bright')
       }
@@ -556,7 +517,6 @@ function initBatteryModule() {
     }
   }
 
-  // Функция увеличения заряда на шаг10%
   function increaseBattery(step = 10) {
     let newLevel = currentBatteryLevel + step
     if (newLevel > 100) newLevel = 100
@@ -564,12 +524,10 @@ function initBatteryModule() {
     return newLevel
   }
 
-  // Функция сброса батареи
   function resetBattery() {
     updateBatteryLevel(0)
   }
 
-  // стили для иконки
   if (lightIcon) {
     lightIcon.style.position = 'absolute'
     lightIcon.style.top = '50%'
@@ -594,13 +552,11 @@ function initBatteryModule() {
     percentElement.style.bottom = '1.5vw'
   }
 
-  // Обработчик клика по батарее
   if (batteryContainer) {
     batteryContainer.addEventListener('click', (e) => {
       e.stopPropagation()
       increaseBattery(10)
 
-      // Микро-анимация нажатия
       batteryContainer.style.transform = 'scale(0.97)'
       setTimeout(() => {
         if (batteryContainer) batteryContainer.style.transform = ''
@@ -617,7 +573,6 @@ function initBatteryModule() {
   }
 }
 function initRainIconSlider() {
-  /* RAIN ICONSLIDER */
   const slider = document.querySelector('.rainSlider')
   const btn = slider.querySelector('.rainButton')
   const items = slider.querySelectorAll('.rainIcon')
@@ -629,27 +584,23 @@ function initRainIconSlider() {
       iRect.left - sRect.left + iRect.width / 2 - btn.offsetWidth / 2
     btn.style.transform = `translateY(-50%) translateX(${offset}px)`
 
-    // обновляем уровень потока
     if (window.moneyRainAPI && typeof index !== 'undefined') {
       window.moneyRainAPI.setLevel(index)
     }
   }
 
-  // Инициализация позиции кнопки
   function initButtonPosition() {
     if (items.length > 0) {
-      // Проверяем текущий уровень
       let activeIndex = 0
       if (window.moneyRainAPI) {
         activeIndex = window.moneyRainAPI.getLevel()
       }
-      // Ограничиваем индекс
+
       activeIndex = Math.min(activeIndex, items.length - 1)
       moveTo(items[activeIndex], activeIndex)
     }
   }
 
-  //  обработчики кликов на иконки
   items.forEach((icon, index) => {
     icon.addEventListener('click', () => {
       moveTo(icon, index)
@@ -679,12 +630,11 @@ function initRainIconSlider() {
   })
 }
 function initMoneyRainModule() {
-  // Конфигурация количества падающих долларов для каждого уровня
   const rainConfig = {
     0: {
-      count: 8, // количество одновременно падающих
-      interval: 600, // интервал создания новых (мс)
-      speed: 'slow', // медленное падение
+      count: 8,
+      interval: 600,
+      speed: 'slow',
       durationMin: 2.5,
       durationMax: 4.0
     },
@@ -709,17 +659,14 @@ function initMoneyRainModule() {
   let activeFallingElements = 0
   let maxActiveElements = 50
 
-  // DOM элементы
   let fallingContainer = null
   let rainIcons = null
   let rainButton = null
   let originalDollar = null
 
-  // Функция создания падающего доллара
   function createFallingDollar() {
     if (!fallingContainer || !originalDollar) return null
 
-    // Ограничиваем количество элементов на экране
     if (activeFallingElements > maxActiveElements) return null
 
     const dollar = originalDollar.cloneNode(true)
@@ -727,37 +674,30 @@ function initMoneyRainModule() {
     dollar.style.display = 'block'
     dollar.style.position = 'absolute'
 
-    // Случайная позиция по горизонтали (от 0 до ширины контейнера)
     const containerWidth = fallingContainer.parentElement.clientWidth
     const dollarWidth = parseFloat(getComputedStyle(dollar).width) || 50
     const randomLeft = Math.random() * (containerWidth - dollarWidth)
     dollar.style.left = `${randomLeft}px`
 
-    // Случайная задержка старта
     const randomDelay = Math.random() * 0.5
     dollar.style.animationDelay = `${randomDelay}s`
 
-    // Длительность анимации зависит от выбранного уровня
     const config = rainConfig[currentRainLevel]
     const duration =
       config.durationMin +
       Math.random() * (config.durationMax - config.durationMin)
     dollar.style.animationDuration = `${duration}s`
 
-    // Случайный размер(а почему нет)
     const randomScale = 0.7 + Math.random() * 0.8
     dollar.style.width = `${4.896 * randomScale}vw`
     dollar.style.height = 'auto'
 
-    // Добавляем случайный поворот в начале
     const randomRotate = Math.random() * 360
     dollar.style.transform = `rotate(${randomRotate}deg)`
 
-    // Добавляем элемент в контейнер
     fallingContainer.appendChild(dollar)
     activeFallingElements++
 
-    // Удаляем элемент после окончания анимации
     dollar.addEventListener('animationend', () => {
       if (dollar && dollar.remove) {
         dollar.remove()
@@ -768,7 +708,6 @@ function initMoneyRainModule() {
     return dollar
   }
 
-  // Функция создания нескольких долларов одновременно
   function createBatchOfDollars(count) {
     for (let i = 0; i < count; i++) {
       setTimeout(() => {
@@ -777,15 +716,12 @@ function initMoneyRainModule() {
     }
   }
 
-  // Функция запуска дождя
   function startRain(level) {
-    // Останавливаем текущий дождь
     if (rainInterval) {
       clearInterval(rainInterval)
       rainInterval = null
     }
 
-    // Очищаем все существующие падающие элементы
     if (fallingContainer) {
       const existingDollars =
         fallingContainer.querySelectorAll('.fallingDollar')
@@ -796,10 +732,8 @@ function initMoneyRainModule() {
     const config = rainConfig[level]
     if (!config) return
 
-    // Создаем начальную партию долларов
     createBatchOfDollars(config.count)
 
-    // Запускаем интервал для постоянного создания новых долларов
     rainInterval = setInterval(() => {
       if (fallingContainer && activeFallingElements < maxActiveElements) {
         createFallingDollar()
@@ -809,7 +743,6 @@ function initMoneyRainModule() {
     isRaining = true
   }
 
-  // Функция остановки дождя
   function stopRain() {
     if (rainInterval) {
       clearInterval(rainInterval)
@@ -823,16 +756,13 @@ function initMoneyRainModule() {
     isRaining = false
   }
 
-  // Функция изменения уровня дождя
   function setRainLevel(level) {
     if (level === currentRainLevel) return
 
     currentRainLevel = level
 
-    // Запускаем дождь с новым уровнем
     startRain(currentRainLevel)
 
-    // Визуальная обратная связь - подсветка контейнера
     const moneyRainContainer = document.querySelector('.moneyRain')
     if (moneyRainContainer) {
       moneyRainContainer.style.transition = 'box-shadow 0.2s ease'
@@ -843,14 +773,11 @@ function initMoneyRainModule() {
     }
   }
 
-  // Функция обновления позиции кнопки слайдера
   function updateSliderButtonPosition(level) {
     if (!rainButton) return
 
-    // Удаляем старые классы позиции
     rainButton.classList.remove('pos-0', 'pos-1', 'pos-2')
 
-    // Добавляем новый класс в зависимости от уровня
     switch (level) {
       case 0:
         rainButton.classList.add('pos-0')
@@ -864,15 +791,12 @@ function initMoneyRainModule() {
     }
   }
 
-  // Инициализация
   function init() {
-    // Находим все необходимые элементы
     fallingContainer = document.getElementById('fallingContainer')
     rainIcons = document.querySelectorAll('.rainIcon')
     rainButton = document.querySelector('.rainButton')
     originalDollar = document.querySelector('.karmaDollar')
 
-    // Проверяем наличие контейнера для падающих элементов
     if (!fallingContainer) {
       const moneyRain = document.querySelector('.moneyRain')
       if (moneyRain) {
@@ -884,7 +808,6 @@ function initMoneyRainModule() {
       }
     }
 
-    //  CSS для fallingContainer
     if (fallingContainer) {
       fallingContainer.style.position = 'absolute'
       fallingContainer.style.top = '0'
@@ -896,25 +819,21 @@ function initMoneyRainModule() {
       fallingContainer.style.zIndex = '10'
     }
 
-    // Обработка кликов по иконкам слайдера
     if (rainIcons && rainIcons.length > 0) {
       rainIcons.forEach((icon, index) => {
         icon.addEventListener('click', (e) => {
           e.stopPropagation()
 
-          // уровень дождя (0, 1, 2)
           const newLevel = index
           if (newLevel !== currentRainLevel) {
             setRainLevel(newLevel)
             updateSliderButtonPosition(newLevel)
 
-            // Визуальная обратная связь
             icon.style.transform = 'scale(0.9)'
             setTimeout(() => {
               icon.style.transform = ''
             }, 150)
 
-            // Вибрация при смене режима
             if (navigator.vibrate) navigator.vibrate(50)
           }
         })
@@ -953,7 +872,6 @@ function initTypeTextModule() {
   let isTypingMode = true
   let randomTextInterval = null
 
-  // Словарь случайных символов
   const randomChars = {
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -961,7 +879,6 @@ function initTypeTextModule() {
     symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?/~'
   }
 
-  // Функция получения случайного символа
   function getRandomChar() {
     const allChars =
       randomChars.lowercase +
@@ -971,7 +888,6 @@ function initTypeTextModule() {
     return allChars[Math.floor(Math.random() * allChars.length)]
   }
 
-  // Функция генерации случайной строки заданной длины
   function generateRandomString(length) {
     let result = ''
     for (let i = 0; i < length; i++) {
@@ -980,14 +896,12 @@ function initTypeTextModule() {
     return result
   }
 
-  // Функция добавления случайных ошибок в текст
   function addRandomErrors(text, errorCount) {
     if (errorCount <= 0) return text
 
     let textArray = text.split('')
     const positions = []
 
-    // Выбираем случайные позиции для ошибок
     for (let i = 0; i < errorCount && i < textArray.length; i++) {
       let pos
       do {
@@ -996,7 +910,6 @@ function initTypeTextModule() {
       positions.push(pos)
     }
 
-    // Заменяем символы на случайные
     positions.forEach((pos) => {
       textArray[pos] = getRandomChar()
     })
@@ -1004,7 +917,6 @@ function initTypeTextModule() {
     return textArray.join('')
   }
 
-  // Функция показа случайных символов с ошибками
   function startRandomSymbols() {
     if (randomTextInterval) clearInterval(randomTextInterval)
 
@@ -1016,30 +928,24 @@ function initTypeTextModule() {
 
       iterations++
 
-      // случайная строка
       const randomLength = 10 + Math.floor(Math.random() * 20)
       let randomText = generateRandomString(randomLength)
 
-      // Добавление ошибки
       const errorCount = Math.floor(Math.random() * 5) + 1
       randomText = addRandomErrors(randomText, errorCount)
 
-      // Обновляем текст
       typingElement.textContent = randomText
 
-      // эффект "глюка"
       typingElement.style.transform =
         'skewX(' + (Math.random() * 4 - 2) + 'deg)'
       setTimeout(() => {
         if (typingElement) typingElement.style.transform = ''
       }, 100)
 
-      //возвращение исходного текста(ааааааааа)
       if (iterations >= maxIterations) {
         clearInterval(randomTextInterval)
         randomTextInterval = null
 
-        // Возвращаем исходный текст(я это дописал,офигеть)
         setTimeout(() => {
           typingElement.textContent = originalText
           isTypingMode = true
@@ -1056,7 +962,6 @@ function initTypeTextModule() {
     startRandomSymbols()
   }
 
-  // Функция сброса
   function resetToOriginal() {
     if (randomTextInterval) {
       clearInterval(randomTextInterval)
@@ -1067,7 +972,6 @@ function initTypeTextModule() {
     isTypingMode = true
   }
 
-  //обработчик клика для активации
   if (typeTextContainer) {
     typeTextContainer.style.cursor = 'pointer'
 
@@ -1087,7 +991,6 @@ function initTypeTextModule() {
     })
   }
 
-  // сброс по двойному клику
   if (typingElement) {
     typingElement.addEventListener('dblclick', (e) => {
       e.stopPropagation()
@@ -1095,7 +998,6 @@ function initTypeTextModule() {
     })
   }
 
-  // стили
   if (typeTextContainer) {
     typeTextContainer.style.backgroundColor = '#fff'
     typeTextContainer.style.transition = 'transform 0.2s ease'
@@ -1121,7 +1023,6 @@ function initMemoGame() {
   let flipped = []
   let locked = false
 
-  // оборот карточек
   cards.forEach((card) => {
     const img = card.querySelector('img')
     if (!card.querySelector('.card-inner')) {
@@ -1148,7 +1049,6 @@ function initMemoGame() {
         const [a, b] = flipped
 
         if (a.dataset.icon === b.dataset.icon) {
-          // Совпадение
           a.classList.add('active')
           b.classList.add('active')
           a.classList.remove('flipped')
@@ -1156,7 +1056,6 @@ function initMemoGame() {
           flipped = []
           locked = false
         } else {
-          // Не совпало
           setTimeout(() => {
             a.classList.remove('flipped')
             b.classList.remove('flipped')
@@ -1176,12 +1075,10 @@ function initLabyrinth() {
 
   if (!labirinth || !player) return null
 
-  //начальное состояние
   if (winletter) winletter.style.display = 'none'
   if (walls) walls.style.display = 'block'
   if (player) player.style.display = 'block'
 
-  // константы
   const SVG_W = 651
   const SVG_H = 653
   const STROKE_W = 13
@@ -1217,7 +1114,6 @@ function initLabyrinth() {
   ctx.stroke(new Path2D(PATH))
   const pixels = ctx.getImageData(0, 0, SVG_W, SVG_H).data
 
-  //вспомогательное нечто
   function isWall(x, y) {
     x = Math.round(x)
     y = Math.round(y)
@@ -1246,7 +1142,6 @@ function initLabyrinth() {
     return distance < PLAYER_VW
   }
 
-  // состояние и управление
   let gameActive = true
   let px = START_PX
   let py = START_PY
