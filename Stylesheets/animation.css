@@ -96,3 +96,38 @@
     transform: rotate(360deg);
   }
 }
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0vw);
+  }
+  50% {
+    transform: translateY(-1.17vw);
+  }
+  100% {
+    transform: translateY(0vw);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0vw);
+  }
+  50% {
+    transform: translateY(-1.56vw);
+  }
+  100% {
+    transform: translateY(0vw);
+  }
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(0vw);
+  }
+  50% {
+    transform: translateY(1.56vw);
+  }
+  100% {
+    transform: translateY(0vw);
+  }
+}

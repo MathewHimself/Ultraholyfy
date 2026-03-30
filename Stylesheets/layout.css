@@ -38,6 +38,37 @@ body::before {
   width: 90.625vw;
   height: 43.073vw;
 }
+.computer {
+  position: relative;
+  width: 74.219vw;
+  height: 41.771vw;
+  padding-top: 1vw;
+  padding-left: 8vw;
+  z-index: 5;
+}
+/*  Компьютер (computer) - плавное движение вверх-вниз */
+.floating-computer {
+  animation: floatUpDown 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/*  Компьютер 2 (computer2) - плавное движение вверх-вниз */
+.floating-computer2 {
+  animation: floatUpDown 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/*. Камера 1 (camera1) - движение ВВЕРХ */
+.floating-camera-up {
+  animation: floatUp 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/*  Камера 2 (camera2) - движение ВНИЗ */
+.floating-camera-down {
+  animation: floatDown 4s ease-in-out infinite;
+  will-change: transform;
+}
 .krest1 {
   position: absolute;
   width: 2.9vw;
@@ -148,12 +179,6 @@ body::before {
   height: 1.719vw;
 }
 
-#container3D {
-  position: absolute;
-  background-color: red;
-  width: 75vw;
-  height: 38vw;
-}
 .section2 {
   width: 91.198vw;
   height: 39.219vw;
@@ -968,6 +993,7 @@ body::before {
   display: flex;
   flex-direction: column;
   gap: 1.7vw;
+  z-index: 10;
 }
 /* Карточки мемо */
 .memo .card {

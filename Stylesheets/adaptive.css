@@ -1,51 +1,18 @@
-/* @media (max-width: 768px) {
-  .Button1 {
-    border: 1px solid #fff;
-    width: 11.719vw;
-    height: 6.38vw;
-    top: 60.7vw;
-    left: 44.3vw;
-    gap: 0.365vw;
-  }
-  .stackicon {
-    width: 1.719vw;
-    height: 1.719vw;
-  }
-  .slider1 {
-    width: 4.688vw;
-    height: 4.688vw;
-    display: flex;
-  }
-  .slider2 {
-    width: 4.688vw;
-    height: 4.688vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 13px;
-  }
-  .squareicon {
-    width: 2.734vw;
-    height: 2.734vw;
-  }
-  .stackicon {
-    width: 2.734vw;
-    height: 2.734vw;
-  }
-} */
 @media screen and (max-width: 768px) {
-  /* Фоновое изображение → мобильный вариант */
-  /* body::before {
-    background-image: url('../Images/mobile.jpg');
-  } */
-
-  /* Секция становится выше: ~65.5vw (пропорция макета 503/768) */
   .section1 {
     width: 90.625vw;
     height: 65.5vw;
   }
-
-  /* Кресты — верхние остаются, нижние съезжают вниз пропорционально */
+  .computer {
+    position: absolute;
+    width: 94.141vw;
+    height: 52.995vw;
+    padding-top: 8vw;
+    left: -6vw;
+  }
+  .labirinth {
+    display: none;
+  }
   .krest1 {
     width: 3.9vw;
     height: 4.2vw;
@@ -69,7 +36,6 @@
     padding-left: 86.7vw;
   }
 
-  /* Karma SVG: выше и крупнее под новую высоту секции */
   .karma {
     width: 82vw;
     height: 20vw;
@@ -77,7 +43,6 @@
     padding-left: 4.5vw;
   }
 
-  /* Числа: верхние — рядом с крестами, нижние — у дна секции */
   .number1 {
     font-size: 1.5vw;
     padding-top: 2.8vw;
@@ -99,7 +64,6 @@
     padding-left: 79.5vw;
   }
 
-  /* Кнопка-переключатель: чуть крупнее, опущена вниз */
   .Button1 {
     width: 10vw;
     height: 5.2vw;
@@ -126,7 +90,6 @@
     padding-top: 2.2vw;
   }
 
-  /* Блок-рамка: выше, чтобы вместить подросшие бары */
   .oraculBlock {
     width: 90.781vw;
     height: 40vw;
@@ -134,7 +97,6 @@
     border: 1px solid #fff;
   }
 
-  /* Контейнер баров*/
   .inlineContainer {
     width: 82vw;
     height: 36vw;
@@ -198,16 +160,14 @@
     width: 4.7vw;
     height: 4.7vw;
   }
-  /* .section3 {
-    flex-direction: column;
-  } */
+
   .section3 {
     width: 100vw;
     height: auto;
     padding-bottom: 2vw;
     flex-direction: column;
     align-items: center;
-    gap: 1vw;
+    gap: 2vw;
     top: -6vw;
   }
 
@@ -373,7 +333,7 @@
   .section6 {
     flex-direction: column;
     width: 91.406vw;
-    height: 185.547vw;
+    height: 90.547vw;
     top: 25vw;
   }
   .winletter {
